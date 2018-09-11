@@ -1,0 +1,69 @@
+#<std-header style='make' orig-src='shore'>
+#
+#  $Id: Makefile.gcc,v 3.0 2000/09/18 21:05:19 natassa Exp $
+#
+# SHORE -- Scalable Heterogeneous Object REpository
+#
+# Copyright (c) 1994-99 Computer Sciences Department, University of
+#                       Wisconsin -- Madison
+# All Rights Reserved.
+#
+# Permission to use, copy, modify and distribute this software and its
+# documentation is hereby granted, provided that both the copyright
+# notice and this permission notice appear in all copies of the
+# software, derivative works or modified versions, and any portions
+# thereof, and that both notices appear in supporting documentation.
+#
+# THE AUTHORS AND THE COMPUTER SCIENCES DEPARTMENT OF THE UNIVERSITY
+# OF WISCONSIN - MADISON ALLOW FREE USE OF THIS SOFTWARE IN ITS
+# "AS IS" CONDITION, AND THEY DISCLAIM ANY LIABILITY OF ANY KIND
+# FOR ANY DAMAGES WHATSOEVER RESULTING FROM THE USE OF THIS SOFTWARE.
+#
+# This software was developed with support by the Advanced Research
+# Project Agency, ARPA order number 018 (formerly 8230), monitored by
+# the U.S. Army Research Laboratory under contract DAAB07-91-C-Q518.
+# Further funding for this work was provided by DARPA through
+# Rome Research Laboratory Contract No. F30602-97-2-0247.
+#
+#   -- do not edit anything above this line --   </std-header>
+
+#
+# An example Makefile - you MUST -D (define) the proper
+# architecture and OS flags when building a VAS.
+# You can see what those flags are when building the SM.
+# The installed include/common/hostinfo.h should contain 
+# the same flags.
+#
+INSTALL_DIR = ../../../../installed
+INSTALL_LIB = $(INSTALL_DIR)/lib
+INSTALL_INCL = $(INSTALL_DIR)/include
+INSTALL_INCL_LIST =\
+    -I$(INSTALL_INCL)/sm  \
+    -I$(INSTALL_INCL)/common  \
+    -I$(INSTALL_INCL)/sthread \
+    -I$(INSTALL_INCL)/fc \
+    -I$(INSTALL_INCL) 
+
+GCC = gcc
+
+GCCFLAGS = \
+    -D_LARGEFILE64_SOURCE=1 \
+    -DDEBUG -DW_DEBUG -DW_TRACE \
+    -Wall -W -Wpointer-arith -Wwrite-strings -Wstrict-prototypes \
+    -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
+    -Woverloaded-virtual -Werror \
+    -fno-inline 
+
+
+default: file_scan
+
+file_scan.o:  file_scan.cpp
+	$(GCC) -x c++ -fno-implicit-templates  -DEXPLICIT_TEMPLATE \
+    $(GCCFLAGS) $(INSTALL_INCL_LIST) -c -g3 file_scan.cpp
+
+options.o:  options.cpp
+	$(GCC) -x c++ -fno-implicit-templates  -DEXPLICIT_TEMPLATE \
+    $(INSTALL_INCL_LIST) $(GCCFLAGS) -c -g3 options.cpp
+
+file_scan:  file_scan.o options.o
+	$(GCC) -o file_scan file_scan.o options.o   $(INSTALL_LIB)/libSM.a $(INSTALL_LIB)/libCOMMON.a $(INSTALL_LIB)/libSTHREAD.a $(INSTALL_LIB)/libFC.a -liberty  -lm -lnsl -ldl -lstdc++

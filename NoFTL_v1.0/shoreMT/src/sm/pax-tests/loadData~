@@ -1,0 +1,85 @@
+#!/bin/bash
+WORKINGDIR=/home/timbuktu/simulator/shoreMT/shoreMT-HPL/src/sm/pax-tests
+OUTPUTFILE=sm_exec.log
+MEGAOUTPUTFILE=sm_exec.megalog
+PAGELAYOUT=`grep page_layout exampleconfig | awk '{print $2}'`
+echo "Usage: loadData [bool askForDelete]";
+args=("$@")
+ASKFORDELETE=${args[0]}
+
+cd $WORKINGDIR
+
+# cleanup
+if [ ! "$ASKFORDELETE" == "0" ]; then
+	echo "Old data will be deleted if you don't cancel now!!!"
+	read
+fi
+echo "Deleting old data"
+rm volumes/*
+rm log/*
+rm $MEGAOUTPUTFILE
+
+echo "Starting load process in format $PAGELAYOUT (0-NSM, 1-PAX, 2-HPL)" >> $OUTPUTFILE
+
+date > $OUTPUTFILE
+echo "----------------" >> $OUTPUTFILE
+echo "Loading lineitem" >> $OUTPUTFILE
+echo "----------------" >> $OUTPUTFILE
+STARTTIMESTAMP=`date +"%s.%N"`
+./sm_exec -i -a lineitem -page_layout $PAGELAYOUT >> $MEGAOUTPUTFILE
+ENDTIMESTAMP=`date +"%s.%N"`
+TIMEUSED=`echo $ENDTIMESTAMP-$STARTTIMESTAMP | bc -l`
+echo "Time used: "$TIMEUSED >> $OUTPUTFILE
+
+date > $OUTPUTFILE
+echo "-----------------" >> $OUTPUTFILE
+echo "Loading lineitem2" >> $OUTPUTFILE
+echo "-----------------" >> $OUTPUTFILE
+STARTTIMESTAMP=`date +"%s.%N"`
+#./sm_exec -a lineitem2 -page_layout $PAGELAYOUT >> $MEGAOUTPUTFILE
+ENDTIMESTAMP=`date +"%s.%N"`
+TIMEUSED=`echo $ENDTIMESTAMP-$STARTTIMESTAMP | bc -l`
+echo "Time used: "$TIMEUSED >> $OUTPUTFILE
+
+date >> $OUTPUTFILE
+echo "--------------" >> $OUTPUTFILE
+echo "Loading orders" >> $OUTPUTFILE
+echo "--------------" >> $OUTPUTFILE
+STARTTIMESTAMP=`date +"%s.%N"`
+./sm_exec -a orders -page_layout $PAGELAYOUT >> $MEGAOUTPUTFILE
+ENDTIMESTAMP=`date +"%s.%N"`
+TIMEUSED=`echo $ENDTIMESTAMP-$STARTTIMESTAMP | bc -l`
+echo "Time used: "$TIMEUSED >> $OUTPUTFILE
+
+date >> $OUTPUTFILE
+echo "------------" >> $OUTPUTFILE
+echo "Loading part" >> $OUTPUTFILE
+echo "------------" >> $OUTPUTFILE
+STARTTIMESTAMP=`date +"%s.%N"`
+./sm_exec -a part -page_layout $PAGELAYOUT >> $MEGAOUTPUTFILE
+ENDTIMESTAMP=`date +"%s.%N"`
+TIMEUSED=`echo $ENDTIMESTAMP-$STARTTIMESTAMP | bc -l`
+echo "Time used: "$TIMEUSED >> $OUTPUTFILE
+
+#date >> $OUTPUTFILE
+#echo Loading supplier >> $OUTPUTFILE
+#./sm_exec -a supplier -page_layout $PAGELAYOUT
+
+#date >> $OUTPUTFILE
+#echo Loading partsupp >> $OUTPUTFILE
+#./sm_exec -a partsupp -page_layout $PAGELAYOUT
+
+#date >> $OUTPUTFILE
+#echo Loading region >> $OUTPUTFILE
+#./sm_exec -a region -page_layout $PAGELAYOUT
+
+#date >> $OUTPUTFILE
+#echo Loading nation >> $OUTPUTFILE
+#./sm_exec -a nation -page_layout $PAGELAYOUT
+
+#date >> $OUTPUTFILE
+#echo Loading customer >> $OUTPUTFILE
+#./sm_exec -a customer -page_layout $PAGELAYOUT
+
+date >> $OUTPUTFILE
+echo "Done." >> $OUTPUTFILE

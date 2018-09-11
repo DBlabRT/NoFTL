@@ -1,0 +1,61 @@
+# some comments
+# number of fields
+16
+
+# number of fixed fields
+13
+
+# 1st field
+I
+
+# 2nd field
+I
+
+# 3th field
+I
+
+# 4th field
+I
+
+# 5th field
+F
+
+# 6th field
+F
+
+# 7th field
+F
+
+# 8th field
+F
+
+# 9st field
+C1
+
+# 10nd field
+C1
+
+# 11th field
+# originally D
+Y
+
+# 12th field
+# originally D
+Y
+
+# 13th field
+# originally D
+Y
+
+# 14th field
+# originally C25
+V25
+
+# 15th field
+# originally C10
+V10
+
+# 16th field
+V44
+
+# end of file

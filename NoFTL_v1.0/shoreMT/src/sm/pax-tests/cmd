@@ -1,0 +1,1 @@
+cat tpcd/data/part.tbl | awk -F\| '{print $9"|"}' > /tmp/stripe

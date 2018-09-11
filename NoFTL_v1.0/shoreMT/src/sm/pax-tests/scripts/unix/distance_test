@@ -1,0 +1,75 @@
+#!/bin/sh
+
+# Selectivity 50%
+
+# Warm-up
+touch 1_2_$1
+time file_scan_$1 -s q -L     0 -H  20000 -Q 1 -S 2 >> 1_2_$1
+# Measure
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 2 ) | tail -5 >> 1_2_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 2 ) | tail -5 >> 1_2_$1
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 2 ) | tail -5 >> 1_2_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 2 ) | tail -5 >> 1_2_$1
+
+# Warm-up
+touch 1_3_$1
+time file_scan_$1 -s q -L     0 -H  20000 -Q 1 -S 3 >> 1_3_$1
+# Measure
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 3 ) | tail -5 >> 1_3_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 3 ) | tail -5 >> 1_3_$1
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 3 ) | tail -5 >> 1_3_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 3 ) | tail -5 >> 1_3_$1
+
+# Warm-up
+touch 1_4_$1
+time file_scan_$1 -s q -L     0 -H  20000 -Q 1 -S 4 >> 1_4_$1
+# Measure
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 4 ) | tail -5 >> 1_4_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 4 ) | tail -5 >> 1_4_$1
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 4 ) | tail -5 >> 1_4_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 4 ) | tail -5 >> 1_4_$1
+
+# Warm-up
+touch 1_5_$1
+time file_scan_$1 -s q -L     0 -H  20000 -Q 1 -S 5 >> 1_5_$1
+# Measure
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 5 ) | tail -5 >> 1_5_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 5 ) | tail -5 >> 1_5_$1
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 5 ) | tail -5 >> 1_5_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 5 ) | tail -5 >> 1_5_$1
+
+# Warm-up
+touch 1_6_$1
+time file_scan_$1 -s q -L     0 -H  20000 -Q 1 -S 6 >> 1_6_$1
+# Measure
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 6 ) | tail -5 >> 1_6_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 6 ) | tail -5 >> 1_6_$1
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 6 ) | tail -5 >> 1_6_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 6 ) | tail -5 >> 1_6_$1
+
+# Warm-up
+touch 1_7_$1
+time file_scan_$1 -s q -L     0 -H  20000 -Q 1 -S 7 >> 1_7_$1
+# Measure
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 7 ) | tail -5 >> 1_7_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 7 ) | tail -5 >> 1_7_$1
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 7 ) | tail -5 >> 1_7_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 7 ) | tail -5 >> 1_7_$1
+
+# Warm-up
+touch 1_8_$1
+time file_scan_$1 -s q -L     0 -H  20000 -Q 1 -S 8 >> 1_8_$1
+# Measure
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 8 ) | tail -5 >> 1_8_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 8 ) | tail -5 >> 1_8_$1
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 8 ) | tail -5 >> 1_8_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 8 ) | tail -5 >> 1_8_$1
+
+# Warm-up
+touch 1_9_$1
+time file_scan_$1 -s q -L     0 -H  20000 -Q 1 -S 9 >> 1_9_$1
+# Measure
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 9 ) | tail -5 >> 1_9_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 9 ) | tail -5 >> 1_9_$1
+( time file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 9 ) | tail -5 >> 1_9_$1
+( time file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 9 ) | tail -5 >> 1_9_$1

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm sector_map_file
+rm block_stat_file
+rm current_pos_file

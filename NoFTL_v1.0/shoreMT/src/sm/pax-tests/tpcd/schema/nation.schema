@@ -1,0 +1,20 @@
+# some comments
+# number of fields
+4
+
+# number of fixed fields
+3
+
+# 1st field
+I
+
+# 2nd field
+C25
+
+# 3th field
+I
+
+# 4th field char with size 10
+V152
+
+# end of file

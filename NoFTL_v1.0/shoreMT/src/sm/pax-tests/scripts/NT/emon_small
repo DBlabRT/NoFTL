@@ -1,0 +1,1 @@
+emon -q -C \(INST_RETIRED:SUP, INST_RETIRED:USER\) -F $1.out $EMON_COMMAND >\& NUL

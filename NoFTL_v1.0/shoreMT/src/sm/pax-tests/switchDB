@@ -1,0 +1,19 @@
+#!/bin/bash
+WORKINGDIR=/home/flashydb/workspace-hpl/shoreMT-HPL/src/sm/pax-tests
+OUTPUTFILE=sm_exec.log
+MEGAOUTPUTFILE=sm_exec.megalog
+PAGELAYOUT=0
+args=("$@")
+SWITCHTO=${args[0]}
+
+cd $WORKINGDIR
+
+# cleanup
+echo "Switching to "$SWITCHTO
+rm -rf volumes
+rm -rf log
+cp -Rv volumes.$SWITCHTO volumes
+cp -Rv log.$SWITCHTO log
+echo $SWITCHTO > currentFormatOfDB
+
+echo "Done switching."

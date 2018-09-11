@@ -1,0 +1,21 @@
+#!/bin/bash
+args=("$@")
+SCANTABLE=${args[0]}
+SCANPARAM=${args[1]}
+WORKINGDIR=${args[2]}
+OUTPUTFILE=${args[3]}
+MEGAOUTPUTFILE=${args[4]}
+
+
+cd $WORKINGDIR
+
+# perform field scan : -u table -s <field number>
+date >> $OUTPUTFILE
+echo "------------------" >> $OUTPUTFILE
+echo "Executing scan for field: "$SCANPARAM >> $OUTPUTFILE
+echo "------------------" >> $OUTPUTFILE
+STARTTIMESTAMP=`date +"%s.%N"`
+./sm_exec -u $SCANTABLE -s$SCANPARAM >> $MEGAOUTPUTFILE
+ENDTIMESTAMP=`date +"%s.%N"`
+TIMEUSED=`echo $ENDTIMESTAMP-$STARTTIMESTAMP | bc -l`
+echo "Time used: "$TIMEUSED >> $OUTPUTFILE

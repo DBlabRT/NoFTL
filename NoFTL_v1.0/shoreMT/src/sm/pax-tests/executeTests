@@ -1,0 +1,49 @@
+#!/bin/bash
+WORKINGDIR=/home/timbuktu/simulator/shoreMT/shoreMT-HPL/src/sm/pax-tests
+OUTPUTFILE=sm_exec.tests.log
+MEGAOUTPUTFILE=sm_exec.megalog
+echo "Usage: executeTests [int numberOfLoops] [0-no_load;1-loadOnce;2-load_every_time]";
+args=("$@")
+LOOPS=${args[0]}
+LOAD=${args[1]}
+
+cd $WORKINGDIR
+DBFORMAT=`cat currentFormatOfDB`
+
+echo "=====================================================================================" >> $OUTPUTFILE
+echo "=====================================================================================" >> $OUTPUTFILE
+echo "=====================================================================================" >> $OUTPUTFILE
+date >> $OUTPUTFILE
+echo "Executing tests for "$DBFORMAT >> $OUTPUTFILE
+
+for (( i = 1; i <= $LOOPS; i++ )); do
+	echo "========================"
+	echo " Running for $i-th time"
+	echo "========================"
+
+if [ ! "$i" == "1" ]; then
+	if [ "$LOAD" == "2" ]; then
+		./loadData 0
+	fi
+fi
+if [ "$i" == "1" ]; then
+	if [ ! "$LOAD" == "0" ]; then
+		./loadData 0
+	fi
+fi
+
+
+./executeTestsSingle 1 $WORKINGDIR $OUTPUTFILE
+#./executeTestsSingle 101 $WORKINGDIR $OUTPUTFILE
+./executeTestsSingle 6 $WORKINGDIR $OUTPUTFILE
+./executeTestsSingle 12 $WORKINGDIR $OUTPUTFILE
+./executeTestsSingle 14 $WORKINGDIR $OUTPUTFILE
+# full scan of table lineitem
+#./executeTableScan lineitem $WORKINGDIR $OUTPUTFILE $MEGAOUTPUTFILE
+# scan field Shipdate
+#./executeFieldScan lineitem 10 $WORKINGDIR $OUTPUTFILE $MEGAOUTPUTFILE
+
+done
+
+date >> $OUTPUTFILE
+echo "Done testing." >> $OUTPUTFILE

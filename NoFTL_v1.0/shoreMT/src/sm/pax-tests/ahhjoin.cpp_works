@@ -1,0 +1,641 @@
+/*
+ * member functions for ahhjoin_q class
+ */
+
+#include "ahhjoin.h"
+#include "sm_hash.h"
+#include "sm_exec.h"
+
+struct hash_elem_t {
+    char* tuple;
+    uint4_t length;
+
+    hash_elem_t(const char* t=NULL, uint4_t l=0)
+    {
+	length = l;
+	if (t!=NULL)
+	{
+	  w_assert3(l>0);
+    	  tuple = new char[l];
+	  memcpy(tuple, t, l);
+	}
+    }
+
+    ~hash_elem_t()
+    {
+    	if (tuple!=NULL) delete tuple;
+    }
+};
+
+w_rc_t ahhjoin_q::run_nsm()
+{
+    uint4_t i, ht_valid, bukIndex;
+
+    hash_tables = new hash_table_t*[num_bucket];
+    w_assert3(hash_tables != NULL);
+
+    // Creating one hash table per bucket.
+    for (i=0; i<num_bucket; ++i)
+    	hash_tables[i] = new hash_table_t(ht_size);
+    ht_valid = num_bucket;  // number of valid hash tables
+
+    // Create an array of store ids
+    stid_t* leftfids = new stid_t[num_bucket];
+
+    for (i=0; i< num_bucket; i++)
+        W_DO(ssm->create_file(VolID, leftfids[i], ss_m::t_temporary));
+
+    // partition left and build hash table.
+    W_DO(partition_left_nsm(leftfids, ht_valid));
+
+    stid_t* rightfids = new stid_t[num_bucket];
+    for (i=0; i < num_bucket; i++)
+        W_DO(ssm->create_file(VolID, rightfids[i], ss_m::t_temporary));
+
+    // partition the right and probe
+    W_DO(partition_right_nsm(rightfids, ht_valid));
+
+    // remove the in memory hash tables leave only the first one.
+    for (i=1; i < ht_valid; i ++) {
+        if (hash_tables[i])  hash_tables[i]->reset();
+        delete hash_tables[i];
+        hash_tables[i] = NULL;
+    }
+    // create the alias for the first hash table,
+    // reset it  for further use
+    if (hash_tables[0]==NULL) {
+        hash_tables[0] = new hash_table_t(ht_size);
+    }
+    hash_table_t* htable = hash_tables[0];
+
+    // build and probe for the remaining partitions.
+    for (bukIndex = ht_valid; bukIndex < num_bucket ; bukIndex ++)
+    {
+        htable->reset();
+        W_COERCE(build_hash_table_nsm(leftfids[bukIndex], htable));
+        W_COERCE(probe_hash_table_nsm(rightfids[bukIndex], htable));
+    }
+
+    // cerr << "Result is " <<  result_tuples << " tuples." << endl;
+    fprintf(stderr, "Result is %llu tuples.\n", result_tuples);
+
+    // clean up
+    htable->reset();
+    delete hash_tables[0];
+    delete [] hash_tables;
+    hash_tables = NULL;
+
+    for (i=0; i< num_bucket; i++) {
+      W_DO(ssm->destroy_file(rightfids[i]));
+      W_DO(ssm->destroy_file(leftfids[i]));
+    }
+
+    delete [] rightfids;
+    delete [] leftfids ;
+
+    return RCOK;
+}
+
+
+w_rc_t ahhjoin_q::run_pax()
+{
+    uint4_t i, ht_valid, bukIndex;
+
+    hash_tables = new hash_table_t*[num_bucket];
+    w_assert3(hash_tables != NULL);
+
+    // Creating one hash table per bucket.
+    for (i=0; i<num_bucket; ++i)
+    	hash_tables[i] = new hash_table_t(ht_size);
+    ht_valid = num_bucket;  // number of valid hash tables
+
+    // Create an array of store ids for the file on the left
+    stid_t* leftfids = new stid_t[num_bucket];
+
+    precord_t left_prec(finfo[LEFT].no_fields, finfo[LEFT].no_ffields);
+    finfo[LEFT].to_prec(left_prec);
+    for (i=0; i< num_bucket; i++)
+        W_DO(ssm->create_file(VolID, leftfids[i], ss_m::t_temporary, left_prec));
+
+    // partition left and build hash table.
+    W_DO(partition_left_pax(leftfids, ht_valid));
+
+    // Create an array of store ids for the file on the right
+    stid_t* rightfids = new stid_t[num_bucket];
+
+    precord_t right_prec(finfo[RIGHT].no_fields, finfo[RIGHT].no_ffields);
+    finfo[RIGHT].to_prec(right_prec);
+    for (i=0; i < num_bucket; i++)
+        W_DO(ssm->create_file(VolID, rightfids[i], ss_m::t_temporary, right_prec));
+
+    // partition the right and probe
+    W_DO(partition_right_pax(rightfids, ht_valid));
+
+    // remove the in memory hash tables leave only the first one.
+    for (i=1; i < ht_valid; i ++) {
+        if (hash_tables[i])  hash_tables[i]->reset();
+        delete hash_tables[i];
+        hash_tables[i] = NULL;
+    }
+    // create the alias for the first hash table,
+    // reset it  for further use
+    if (hash_tables[0]==NULL) {
+        hash_tables[0] = new hash_table_t(ht_size);
+    }
+    hash_table_t* htable = hash_tables[0];
+
+    // build and probe for the remaining partitions.
+    for (bukIndex = ht_valid; bukIndex < num_bucket ; bukIndex ++)
+    {
+        htable->reset();
+        W_COERCE(build_hash_table_pax(leftfids[bukIndex], htable));
+        W_COERCE(probe_hash_table_pax(rightfids[bukIndex], htable));
+    }
+
+    // cerr << "Result is " <<  result_tuples << " tuples." << endl;
+    fprintf(stderr, "Result is %llu tuples.\n", result_tuples);
+
+    // clean up
+    htable->reset();
+    delete hash_tables[0];
+    delete [] hash_tables;
+    hash_tables = NULL;
+
+    for (i=0; i< num_bucket; i++) {
+      W_DO(ssm->destroy_file(rightfids[i]));
+      W_DO(ssm->destroy_file(leftfids[i]));
+    }
+
+    delete [] rightfids;
+    delete [] leftfids ;
+
+    return RCOK;
+}
+
+
+w_rc_t
+ahhjoin_q::partition_left_nsm(stid_t* fids, uint4_t& b_valid)
+{
+    uint4_t i;
+    int memQuota = mem_quota*1024*1024;
+
+    // This is where I'll write the buckets
+    append_file_i **af = new append_file_i*[num_bucket];
+    hash_func_c hashf(num_bucket);
+    
+    for (i=0; i<num_bucket; ++i)
+    	af[i] = new append_file_i(fids[i]);
+
+    uint4_t hashkey = 0;
+
+    scan_file_i scan(finfo[LEFT].fid, cc);
+    pin_i*      handle;
+    bool eof=false;
+    char buf[1024];
+    hash_elem_t* hash_elem;
+
+    rid_t rid;
+
+    while(1) 
+    {
+        // Scan for tuple
+        scan.next(handle, 0, eof);
+        if (eof) break;
+
+        hashkey = hashf(finfo[LEFT], handle->body(), left_col);
+
+        if (hashkey < b_valid) 
+        {
+            hash_elem = new hash_elem_t(handle->body(), handle->body_size());
+            hash_tables[hashkey]->add(
+	      toString(finfo[LEFT], handle->body(), left_col, buf), hash_elem);
+            memQuota -= (hash_elem->length + sizeof(uint4_t));
+
+            // test if the quota is used up.
+            while (memQuota < 0) {
+                b_valid --;
+                memQuota += freeze_hash_table_nsm(hash_tables[b_valid], *af[b_valid]);
+                hash_tables[b_valid] = NULL;
+            }
+        }
+        else {
+            // the hashtable is frozen; write to file.
+	    vec_t rec(handle->body(), handle->body_size());
+            W_DO(af[hashkey]->create_rec(vec_t(), handle->body_size(), rec, rid));
+        }
+
+    } // while
+
+    for (i=0; i<num_bucket; ++i)
+  	delete af[i];
+    delete [] af;
+
+    return RCOK;
+}
+
+
+w_rc_t
+ahhjoin_q::partition_left_pax(stid_t* fids, uint4_t& b_valid)
+{
+    uint4_t i;
+    int memQuota = mem_quota*1024;
+
+    // This is where I'll write the buckets
+    append_pfile_i **af = new append_pfile_i*[num_bucket];
+    hash_func_c hashf(num_bucket);
+    
+    for (i=0; i<num_bucket; ++i)
+    	af[i] = new append_pfile_i(fids[i]);
+
+    uint4_t hashkey = 0;
+
+    scan_pfile_i scan(finfo[LEFT].fid, cc);
+    pin_prec_i*      handle;
+    bool eof=false;
+    char buf[1024];
+    rid_t rid;
+    precord_t *new_prec;
+
+    while(1) 
+    {
+        // Scan for tuple
+        scan.next(handle, eof);
+        if (eof) break;
+
+        hashkey = hashf(finfo[LEFT], handle->precord(), left_col);
+
+        if (hashkey < b_valid) 
+        {
+	    new_prec = new precord_t(handle->precord());
+            hash_tables[hashkey]->add(
+	      toString(finfo[LEFT], *new_prec, left_col, buf), new_prec);
+            memQuota -= new_prec->size();
+
+            // test if the quota is used up.
+            while (memQuota < 0) {
+                b_valid --;
+                memQuota += freeze_hash_table_pax(hash_tables[b_valid], *af[b_valid]);
+                hash_tables[b_valid] = NULL;
+            }
+        }
+        else {
+            // the hashtable is frozen; write to file.
+            W_DO(af[hashkey]->create_rec(handle->precord(), rid));
+        }
+
+    } // while
+
+    for (i=0; i<num_bucket; ++i)
+  	delete af[i];
+    delete [] af;
+
+    return RCOK;
+}
+
+
+// build hash table for the RIGHT partitions on the disk.
+w_rc_t
+ahhjoin_q::partition_right_nsm (stid_t* fids, const uint4_t b_valid)
+{
+    uint4_t i;
+
+    append_file_i **af = new append_file_i*[num_bucket];
+    hash_func_c hashf(num_bucket);
+
+    for (i=0; i<num_bucket; ++i)
+    	af[i] = new append_file_i(fids[i]);
+
+    scan_file_i scan(finfo[RIGHT].fid, cc);
+    pin_i*      handle;
+    bool eof=false;
+    char buf[1024];
+    hash_table_t::val_array_t * vPtr;
+    uint4_t hashkey = 0;
+
+    hash_elem_t *hash_elem;
+
+    rid_t rid;
+
+    while(1) 
+    {
+        scan.next(handle, 0, eof);
+        if (eof) break;
+
+    	hashkey = hashf(finfo[RIGHT], handle->body(), right_col);
+        if (hashkey < b_valid) 
+	{
+            // the hash table is in memory
+            // probe it and output if match
+            vPtr = hash_tables[hashkey]->find_match(
+	      		toString(finfo[RIGHT], handle->body(), right_col, buf));
+
+            if (vPtr != NULL) 
+	    {
+                for (i =0; i < vPtr->getsize(); i++) 
+		{
+                    hash_elem = (hash_elem_t*) (*vPtr)[i];
+
+                    if (compare(
+		    	FIELD_START(finfo[LEFT], hash_elem->tuple, left_col), 
+			FIELD_START(finfo[RIGHT], handle->body(), right_col),
+			finfo[LEFT].field_type[left_col]) == 0)
+		    {
+                        print_two_frecs(finfo[LEFT], hash_elem->tuple,
+					finfo[RIGHT], handle->body());
+		  	result_tuples++;
+                  }
+              }
+          } 
+      }
+      else 
+      {
+          // write to disk
+	  vec_t rec(handle->body(), handle->body_size());
+          W_DO(af[hashkey]->create_rec(vec_t(), handle->body_size(), rec, rid));
+      }
+
+  } // while (1)
+
+  for (i=0; i<num_bucket; ++i)
+  	delete af[i];
+  delete [] af;
+
+  return RCOK;
+}
+
+// build hash table for the RIGHT partitions on the disk.
+w_rc_t
+ahhjoin_q::partition_right_pax (stid_t* fids, const uint4_t b_valid)
+{
+    uint4_t i;
+
+    append_pfile_i **af = new append_pfile_i*[num_bucket];
+    hash_func_c hashf(num_bucket);
+
+    for (i=0; i<num_bucket; ++i)
+    	af[i] = new append_pfile_i(fids[i]);
+
+    scan_pfile_i scan(finfo[RIGHT].fid, cc);
+    pin_prec_i*      handle;
+    bool eof=false;
+    char buf[1024];
+    hash_table_t::val_array_t * vPtr;
+    uint4_t hashkey = 0;
+    precord_t *left_prec;
+
+    rid_t rid;
+
+    while(1) 
+    {
+        scan.next(handle, eof);
+        if (eof) break;
+
+    	hashkey = hashf(finfo[RIGHT], handle->precord(), right_col);
+        if (hashkey < b_valid) 
+	{
+            // the hash table is in memory
+            // probe it and output if match
+            vPtr = hash_tables[hashkey]->find_match(
+      		toString(finfo[RIGHT], handle->precord(), right_col, buf));
+
+            if (vPtr != NULL) 
+	    {
+                for (i =0; i < vPtr->getsize(); i++) 
+		{
+                    left_prec = (precord_t*) (*vPtr)[i];
+
+                    if (compare(left_prec->data[left_col], 
+				handle->precord().data[right_col],
+				finfo[LEFT].field_type[left_col]) == 0)
+		    {
+                        print_two_precs(finfo[LEFT], *left_prec,
+					finfo[RIGHT], handle->precord());
+		  	result_tuples++;
+                  }
+              }
+          } 
+      }
+      else 
+      {
+          // write to disk
+          W_DO(af[hashkey]->create_rec(handle->precord(), rid));
+      }
+
+  } // while (1)
+
+  for (i=0; i<num_bucket; ++i)
+  	delete af[i];
+  delete [] af;
+
+  return RCOK;
+}
+
+// build hash table for the LEFT partitions on the disk.
+// the same as in Grace Hash Join
+w_rc_t ahhjoin_q::build_hash_table_nsm(stid_t& pfid, hash_table_t* htable)
+{
+  scan_file_i scan(pfid);
+  pin_i* handle;
+  bool eof=false;
+  char buf[1024];
+  hash_elem_t* hash_elem=NULL;
+
+  while(1) {
+    scan.next(handle, 0, eof);
+    if (eof) break;
+
+    hash_elem = new hash_elem_t(handle->body(), handle->body_size());
+    htable->add(toString(finfo[LEFT], handle->body(), left_col, buf), hash_elem);
+  }
+  return RCOK;
+}
+
+// build hash table for the LEFT partitions on the disk.
+// the same as in Grace Hash Join
+w_rc_t ahhjoin_q::build_hash_table_pax(stid_t& pfid, hash_table_t* htable)
+{
+  scan_pfile_i scan(pfid);
+  pin_prec_i* handle;
+  bool eof=false;
+  char buf[1024];
+  precord_t *new_prec;
+
+  while(1) {
+    scan.next(handle, eof);
+    if (eof) break;
+
+    new_prec = new precord_t(handle->precord());
+    htable->add(toString(finfo[LEFT], *new_prec, left_col, buf), new_prec);
+  }
+  return RCOK;
+}
+
+// probe the hash table using the on-disk partition
+w_rc_t ahhjoin_q::probe_hash_table_nsm(stid_t& pfid, hash_table_t* htable)
+{
+    scan_file_i scan(pfid);
+    pin_i* handle;
+    bool eof=false;
+    char buf[1024];
+    hash_table_t::val_array_t * vPtr;
+    hash_elem_t* hash_elem;
+    uint4_t i;
+
+    while(1) 
+    {
+        scan.next(handle, 0, eof);
+        if (eof) break;
+
+        vPtr = htable->find_match(
+	    toString(finfo[RIGHT], handle->body(), right_col, buf));
+
+        if (vPtr != NULL) 
+	{
+            for (i = 0; i < vPtr->getsize(); i++) 
+	    {
+                hash_elem = (hash_elem_t*) (*vPtr)[i];
+
+                if (compare(
+		    	FIELD_START(finfo[LEFT], hash_elem->tuple, left_col), 
+			FIELD_START(finfo[RIGHT], handle->body(), right_col),
+			finfo[LEFT].field_type[left_col]) == 0)
+		{
+                        print_two_frecs(finfo[LEFT], hash_elem->tuple,
+					finfo[RIGHT], handle->body());
+			result_tuples++;
+                }
+            }
+        }
+    }
+  return RCOK;
+}
+
+// probe the hash table using the on-disk partition
+w_rc_t ahhjoin_q::probe_hash_table_pax(stid_t& pfid, hash_table_t* htable)
+{
+    scan_pfile_i scan(pfid);
+    pin_prec_i* handle;
+    bool eof=false;
+    char buf[1024];
+    hash_table_t::val_array_t * vPtr;
+    uint4_t i;
+
+    precord_t* left_prec;
+
+    while(1) 
+    {
+        scan.next(handle, eof);
+        if (eof) break;
+
+        vPtr = htable->find_match(
+	    toString(finfo[RIGHT], handle->precord(), right_col, buf));
+
+        if (vPtr != NULL) 
+	{
+            for (i = 0; i < vPtr->getsize(); i++) 
+	    {
+                left_prec = (precord_t*) (*vPtr)[i];
+
+                if (compare(
+			left_prec->data[left_col],
+			handle->precord().data[right_col],
+			finfo[LEFT].field_type[left_col]) == 0)
+		{
+                        print_two_precs(finfo[LEFT], *left_prec,
+					finfo[RIGHT], handle->precord());
+			result_tuples++;
+                }
+            }
+        }
+    }
+  return RCOK;
+}
+
+// freeze a partition.
+// write the tuples to the file, free the memory of the hash table.
+// delete the hashtable, set it to NULL.
+// return number of bytes reclaimed by free the elements .
+uint4_t
+ahhjoin_q::freeze_hash_table_nsm(hash_table_t* &htable, append_file_i& af)
+{
+    if (htable==NULL) return 0;
+
+    uint4_t nbytes = 0;
+    uint4_t bukIndex;
+    uint4_t i;
+    hash_table_t::table_entry_t* entry;
+
+    rid_t rid;
+
+    // it should be wrapped by hashtable. UGLY Code.
+    for (bukIndex=0; bukIndex < htable->m_size; bukIndex ++) 
+    {
+        for (entry=htable->m_table[bukIndex].next;
+            entry != & (htable->m_table[bukIndex]);
+            entry = entry->next) 
+	{
+            w_assert3(entry);
+            for (i=0; i<entry->val_array.getsize();i++) 
+	    {
+                hash_elem_t* hash_elem = (hash_elem_t*) (entry->val_array[i]);
+	        vec_t rec(hash_elem->tuple, hash_elem->length);
+	        W_COERCE(af.create_rec(vec_t(), hash_elem->length, rec, rid));
+               nbytes += (hash_elem->length + sizeof(uint4_t));
+            }
+        }
+    }
+
+    htable->reset();
+    delete htable;
+    htable = NULL;
+
+    return nbytes;
+}
+
+// freeze a partition.
+// write the tuples to the file, free the memory of the hash table.
+// delete the hashtable, set it to NULL.
+// return number of bytes reclaimed by free the elements .
+uint4_t
+ahhjoin_q::freeze_hash_table_pax(hash_table_t* &htable, append_pfile_i& af)
+{
+    if (htable==NULL) return 0;
+
+    uint4_t nbytes = 0;
+    uint4_t bukIndex;
+    uint4_t i;
+    hash_table_t::table_entry_t* entry;
+
+    precord_t *prec;
+    rid_t rid;
+
+    // it should be wrapped by hashtable. UGLY Code.
+    for (bukIndex=0; bukIndex < htable->m_size; bukIndex ++) 
+    {
+        for (entry=htable->m_table[bukIndex].next;
+            entry != & (htable->m_table[bukIndex]);
+            entry = entry->next) 
+	{
+            w_assert3(entry);
+            for (i=0; i<entry->val_array.getsize();i++) 
+	    {
+                prec = (precord_t*) (entry->val_array[i]);
+	        W_COERCE(af.create_rec(*prec, rid));
+               nbytes += prec->size();
+            }
+        }
+    }
+
+    htable->reset();
+    delete htable;
+    htable = NULL;
+
+    return nbytes;
+}
+
+w_rc_t ahhjoin_q::run_dsm()
+{
+    return RCOK;
+}
+
+

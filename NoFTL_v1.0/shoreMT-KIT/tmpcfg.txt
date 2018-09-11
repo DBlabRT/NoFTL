@@ -1,0 +1,15 @@
+configure args: --enable-shore6 --enable-debug --enable-dbgsymbols SHORE_HOME=../shoreMT-HPL/
+
+Shore Kits configuration:
+  Version:         KITS_VERSION   shore-kits.2.1
+  Home:            KITS_HOME      /home/timbuktu/simulator/shoreMT/shoreMT-KIT-NSM
+  Features:        KITS_FEATURES   caches
+  Shore SM home:   SHORE_HOME     ../shoreMT-HPL/
+  Shore SM type:   SHORE_TYPE     Shore-SM-6.X.X
+  Readline home:   READLINE_HOME  /usr
+  CXX compiler:    CXX            g++
+  CXX version:     CXX_VERSION    4.6.3
+  Architecture/OS: ARCHOS         x86_64_LINUX
+  Compilation:     COMP_OPTIONS    debug dbgsymbols
+  CXXFLAGS         -g -O0 -ggdb   -mtune=native -march=native -Wall -Wcast-align -Wextra -Wfloat-equal -Wno-return-type 	 -Wno-invalid-offsetof -Wno-conversion -Wno-system-headers -D_REENTRANT -DARCH_LP64 -m64  
+  LDFLAGS          -lnsl -ldl -lm -lpthread -lrt  -lncurses

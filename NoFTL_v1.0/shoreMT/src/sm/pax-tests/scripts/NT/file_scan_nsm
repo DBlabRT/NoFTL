@@ -1,0 +1,2 @@
+file_scan -device_name d:/shore_volumes_hp/disk0 -sm_logdir d:/shore_log_hp -page_layout 0 $*
+

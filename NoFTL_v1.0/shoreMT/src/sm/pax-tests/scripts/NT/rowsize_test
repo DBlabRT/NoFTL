@@ -1,0 +1,186 @@
+# <program> <page_layout> <disk> <test> <param>
+# example: run 8num_2xl S 20
+# warmup
+
+# out_file_name = shore_PL_SEL_DIS_PROJ_PRED_NFL
+
+# Rowsize tests
+
+
+echo "First run starting"
+
+# HP
+
+# 2 fields
+# load the data
+cp ex2 exampleconfig
+cp ffl2 ffl.txt
+file_scan_16 -device_name d:/shore_volumes_hp/disk_2num_8xl -device_quota 500000 -load_from tables/2num_8xl.tbl -page_layout 0 -i
+export EMON_COMMAND="file_scan_16 -device_name d:/shore_volumes_hp/disk_2num_8xl -page_layout 0 -T D1"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_HP_50_1_1_1_2
+rm //d/shore_volumes_hp/disk_2num_8xl
+
+
+# 4 fields
+# load the data
+cp ex4 exampleconfig
+cp ffl4 ffl.txt
+file_scan_16 -device_name d:/shore_volumes_hp/disk_4num_4xl -device_quota 500000 -load_from tables/4num_4xl.tbl -page_layout 0 -i
+export EMON_COMMAND="file_scan_16 -device_name d:/shore_volumes_hp/disk_4num_4xl -page_layout 0 -T D2"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_HP_50_2_1_1_4
+rm //d/shore_volumes_hp/disk_4num_4xl
+
+
+# 16 fields
+# load the data
+cp ex16 exampleconfig
+cp ffl16 ffl.txt
+file_scan_16 -device_name d:/shore_volumes_hp/disk_16num_1xl -device_quota 500000 -load_from tables/16num_1xl.tbl -page_layout 0 -i
+export EMON_COMMAND="file_scan_16 -device_name d:/shore_volumes_hp/disk_16num_1xl -page_layout 0 -T D8"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_HP_50_8_1_1_16
+rm //d/shore_volumes_hp/disk_16num_1xl
+
+
+# 32 fields
+# load the data
+cp ex32 exampleconfig
+cp ffl32 ffl.txt
+file_scan_32 -device_name d:/shore_volumes_hp/disk_32num_1xl -device_quota 1000000 -load_from tables/32num_1xl.tbl -page_layout 0 -i
+export EMON_COMMAND="file_scan_32 -device_name d:/shore_volumes_hp/disk_32num_1xl -page_layout 0 -T D16"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_HP_50_16_1_1_32
+rm //d/shore_volumes_hp/disk_32num_1xl
+
+
+# PAG (PVP)
+
+# 2 fields
+# load the data
+cp ex2 exampleconfig
+cp ffl2 ffl.txt
+file_scan_16 -device_name d:/shore_volumes_pvp/disk_2num_8xl -device_quota 500000 -load_from tables/2num_8xl.tbl -page_layout 2 -i
+export EMON_COMMAND="file_scan_16 -device_name d:/shore_volumes_pvp/disk_2num_8xl -page_layout 2 -T D1"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_PVP_50_1_1_1_2
+rm //d/shore_volumes_pvp/disk_2num_8xl
+
+
+# 4 fields
+# load the data
+cp ex4 exampleconfig
+cp ffl4 ffl.txt
+file_scan_16 -device_name d:/shore_volumes_pvp/disk_4num_4xl -device_quota 500000 -load_from tables/4num_4xl.tbl -page_layout 2 -i
+export EMON_COMMAND="file_scan_16 -device_name d:/shore_volumes_pvp/disk_4num_4xl -page_layout 2 -T D2"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_PVP_50_2_1_1_4
+rm //d/shore_volumes_pvp/disk_4num_4xl
+
+
+# 16 fields
+# load the data
+cp ex16 exampleconfig
+cp ffl16 ffl.txt
+file_scan_16 -device_name d:/shore_volumes_pvp/disk_16num_1xl -device_quota 500000 -load_from tables/16num_1xl.tbl -page_layout 2 -i
+export EMON_COMMAND="file_scan_16 -device_name d:/shore_volumes_pvp/disk_16num_1xl -page_layout 2 -T D8"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_PVP_50_8_1_1_16
+rm //d/shore_volumes_pvp/disk_16num_1xl
+
+
+# 32 fields
+# load the data
+cp ex32 exampleconfig
+cp ffl32 ffl.txt
+file_scan_32 -device_name d:/shore_volumes_pvp/disk_32num_1xl -device_quota 1000000 -load_from tables/32num_1xl.tbl -page_layout 2 -i
+export EMON_COMMAND="file_scan_32 -device_name d:/shore_volumes_pvp/disk_32num_1xl -page_layout 2 -T D16"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_PVP_50_16_1_1_32
+rm //d/shore_volumes_pvp/disk_32num_1xl
+
+
+#do the 8-fields, just for fun, if there's time
+
+# 8 fields
+# no need to load the data
+cp ex8 exampleconfig
+cp ffl8 ffl.txt
+export EMON_COMMAND="file_scan_16 -device_name d:/shore_volumes_hp/disk_8num_2xl -page_layout 0 -T D4"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_HP_50_4_1_1_8
+
+
+# 8 fields
+# no need to load the data
+cp ex8 exampleconfig
+cp ffl8 ffl.txt
+export EMON_COMMAND="file_scan_16 -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T D4"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_PVP_50_4_1_1_8
+
+
+# do the 64-fields, just for fun, if there's time
+
+# HP
+
+echo "starting 64"
+# 64 fields
+# load the data
+cp ex64 exampleconfig
+cp ffl64 ffl.txt
+file_scan_64 -device_name d:/shore_volumes_hp/disk_64num_1xl -device_quota 1000000 -load_from tables/64num_1xl.tbl -page_layout 0 -i
+export EMON_COMMAND="file_scan_64 -device_name d:/shore_volumes_hp/disk_64num_1xl -page_layout 0 -T D32"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_HP_50_32_1_1_64
+rm //d/shore_volumes_hp/disk_64num_1xl
+
+# PVP 
+
+# 64 fields
+# load the data
+cp ex64 exampleconfig
+cp ffl64 ffl.txt
+file_scan_64 -device_name d:/shore_volumes_pvp/disk_64num_1xl -device_quota 1500000 -load_from tables/64num_1xl.tbl -page_layout 2 -i
+export EMON_COMMAND="file_scan_64 -device_name d:/shore_volumes_pvp/disk_64num_1xl -page_layout 2 -T D32"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_PVP_50_32_1_1_64
+rm //d/shore_volumes_pvp/disk_64num_1xl
+

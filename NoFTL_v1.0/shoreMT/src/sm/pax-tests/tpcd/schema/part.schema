@@ -1,0 +1,38 @@
+# some comments
+# number of fields
+9
+
+# number of fixed fields
+3
+
+# 8th field
+F
+
+# 1st field
+I
+
+# 6th field
+I
+
+# 3th field
+# originally C25
+V25
+
+# 4th field
+# originally C10
+V10
+
+# 7th field
+# originally C10
+V10
+
+# 9st field
+V23
+
+# 5th field
+V25
+
+# 2nd field
+V55
+
+# end of file

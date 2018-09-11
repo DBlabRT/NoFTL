@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm databases/*
+cp db-tpcc-1 databases/
+rm log-tpcc-1/*
+

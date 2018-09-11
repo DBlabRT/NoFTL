@@ -1,0 +1,573 @@
+=====================================================================================
+=====================================================================================
+=====================================================================================
+Thu May  9 19:29:10 CEST 2013
+Executing tests for nsm
+Thu May  9 19:29:10 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 1.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+Scanned 6001215 records, 5860757 qualified.
+QUERY RESULT: 
+	L_RETURNFLAG	L_LINESTATUS	SUM_QTY	SUM_BASE_PRICE	SUM_DISC_PRICE	SUM_CHARGE	AVG_QTY	AVG_PRICE	AVG_DISC	COUNT_ORDER
+
+	A		F		37734107.000	56586554400.730	53758257134.865	55909065222.826	25.522	 0.050	1478493.000
+	N		F		991417.000	1487504710.380	1413082168.054	1469649223.194	25.516	 0.050	38854.000
+	N		O		73051031.000	109563825712.424	104086967905.343	108254107418.163	25.502	 0.050	2864540.000
+	R		F		37719753.000	56568041380.904	53741292684.604	55889619119.830	25.506	 0.050	1478870.000
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=226134
+read[GC]=0
+read=226134
+
+write[NOT_GC]=0
+write[GC]=0
+write=0
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=0
+oob_write[GC]=0
+oob_write=0
+
+erase=0
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=0
+oob_write_without_delay[GC]=0
+oob_write_without_delay=0
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 63.067393847
+Thu May  9 19:30:13 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 6.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+QUERY RESULT: Sum is     102780715
+Scanned 6001215 records, 114363 qualified.
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=218707
+read[GC]=0
+read=218707
+
+write[NOT_GC]=0
+write[GC]=0
+write=0
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=0
+oob_write[GC]=0
+oob_write=0
+
+erase=0
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=0
+oob_write_without_delay[GC]=0
+oob_write_without_delay=0
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 58.910343712
+Thu May  9 19:31:12 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 12.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+QUERY RESULT: 
+	SHIPMODE	HIGH	LOW
+	RAIL		  6313	  9320
+	SHIP		  6200	  9262
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=266855
+read[GC]=99
+read=266954
+
+write[NOT_GC]=42
+write[GC]=99
+write=141
+
+oob_read[NOT_GC]=0
+oob_read[GC]=99
+oob_read=99
+
+oob_write[NOT_GC]=32
+oob_write[GC]=0
+oob_write=32
+
+erase=3
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=42
+oob_write_without_delay[GC]=99
+oob_write_without_delay=141
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 101.148715037
+Thu May  9 19:32:53 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 14.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+QUERY RESULT: cond_sum = 448273121.781, sum = 2715413679.618
+QUERY RESULT:        16.508.
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=226341
+read[GC]=0
+read=226341
+
+write[NOT_GC]=42
+write[GC]=0
+write=42
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=41
+oob_write[GC]=0
+oob_write=41
+
+erase=0
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=42
+oob_write_without_delay[GC]=0
+oob_write_without_delay=42
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 94.643838021
+Thu May  9 19:34:28 CEST 2013
+Done testing.
+=====================================================================================
+=====================================================================================
+=====================================================================================
+Thu May  9 19:49:59 CEST 2013
+Executing tests for nsm
+Thu May  9 19:49:59 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 1.
+Getting SSM config info for record size ...
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Scanned 6001215 records, 5860757 qualified.
+QUERY RESULT: 
+	L_RETURNFLAG	L_LINESTATUS	SUM_QTY	SUM_BASE_PRICE	SUM_DISC_PRICE	SUM_CHARGE	AVG_QTY	AVG_PRICE	AVG_DISC	COUNT_ORDER
+
+	A		F		37734107.000	56586554400.730	53758257134.865	55909065222.826	25.522	 0.050	1478493.000
+	N		F		991417.000	1487504710.380	1413082168.054	1469649223.194	25.516	 0.050	38854.000
+	N		O		73051031.000	109563825712.424	104086967905.343	108254107418.163	25.502	 0.050	2864540.000
+	R		F		37719753.000	56568041380.904	53741292684.604	55889619119.830	25.506	 0.050	1478870.000
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=218706
+read[GC]=0
+read=218706
+
+write[NOT_GC]=0
+write[GC]=0
+write=0
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=0
+oob_write[GC]=0
+oob_write=0
+
+erase=0
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=0
+oob_write_without_delay[GC]=0
+oob_write_without_delay=0
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 59.641850732
+Thu May  9 19:50:59 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 6.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+QUERY RESULT: Sum is     102780715
+Scanned 6001215 records, 114363 qualified.
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=218707
+read[GC]=0
+read=218707
+
+write[NOT_GC]=0
+write[GC]=0
+write=0
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=0
+oob_write[GC]=0
+oob_write=0
+
+erase=0
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=0
+oob_write_without_delay[GC]=0
+oob_write_without_delay=0
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 59.220840134
+Thu May  9 19:51:58 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 12.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+QUERY RESULT: 
+	SHIPMODE	HIGH	LOW
+	RAIL		  6313	  9320
+	SHIP		  6200	  9262
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=266855
+read[GC]=99
+read=266954
+
+write[NOT_GC]=42
+write[GC]=99
+write=141
+
+oob_read[NOT_GC]=0
+oob_read[GC]=99
+oob_read=99
+
+oob_write[NOT_GC]=32
+oob_write[GC]=0
+oob_write=32
+
+erase=3
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=42
+oob_write_without_delay[GC]=99
+oob_write_without_delay=141
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 118.926265323
+Thu May  9 19:53:57 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 14.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+QUERY RESULT: cond_sum = 448273121.781, sum = 2715413679.618
+QUERY RESULT:        16.508.
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=226341
+read[GC]=0
+read=226341
+
+write[NOT_GC]=42
+write[GC]=0
+write=42
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=41
+oob_write[GC]=0
+oob_write=41
+
+erase=0
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=42
+oob_write_without_delay[GC]=0
+oob_write_without_delay=42
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 96.535523898
+Thu May  9 19:55:34 CEST 2013
+Done testing.
+=====================================================================================
+=====================================================================================
+=====================================================================================
+Thu May  9 20:05:36 CEST 2013
+Executing tests for nsm
+Thu May  9 20:05:36 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 1.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+Scanned 6001215 records, 5860757 qualified.
+QUERY RESULT: 
+	L_RETURNFLAG	L_LINESTATUS	SUM_QTY	SUM_BASE_PRICE	SUM_DISC_PRICE	SUM_CHARGE	AVG_QTY	AVG_PRICE	AVG_DISC	COUNT_ORDER
+
+	A		F		37734107.000	56586554400.730	53758257134.865	55909065222.826	25.522	 0.050	1478493.000
+	N		F		991417.000	1487504710.380	1413082168.054	1469649223.194	25.516	 0.050	38854.000
+	N		O		73051031.000	109563825712.424	104086967905.343	108254107418.163	25.502	 0.050	2864540.000
+	R		F		37719753.000	56568041380.904	53741292684.604	55889619119.830	25.506	 0.050	1478870.000
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=226134
+read[GC]=0
+read=226134
+
+write[NOT_GC]=0
+write[GC]=0
+write=0
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=0
+oob_write[GC]=0
+oob_write=0
+
+erase=0
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=0
+oob_write_without_delay[GC]=0
+oob_write_without_delay=0
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 62.598653374
+Thu May  9 20:06:39 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 6.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+QUERY RESULT: Sum is     102780715
+Scanned 6001215 records, 114363 qualified.
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=218707
+read[GC]=0
+read=218707
+
+write[NOT_GC]=0
+write[GC]=0
+write=0
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=0
+oob_write[GC]=0
+oob_write=0
+
+erase=0
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=0
+oob_write_without_delay[GC]=0
+oob_write_without_delay=0
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 59.030080758
+Thu May  9 20:07:38 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 12.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+QUERY RESULT: 
+	SHIPMODE	HIGH	LOW
+	RAIL		  6313	  9320
+	SHIP		  6200	  9262
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=266855
+read[GC]=99
+read=266954
+
+write[NOT_GC]=42
+write[GC]=99
+write=141
+
+oob_read[NOT_GC]=0
+oob_read[GC]=99
+oob_read=99
+
+oob_write[NOT_GC]=32
+oob_write[GC]=0
+oob_write=32
+
+erase=3
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=42
+oob_write_without_delay[GC]=99
+oob_write_without_delay=141
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 108.287469977
+Thu May  9 20:09:27 CEST 2013
+------------------
+Executing query 
+------------------
+Running TPC-H query 14.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+QUERY RESULT: cond_sum = 448273121.781, sum = 2715413679.618
+QUERY RESULT:        16.508.
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=226341
+read[GC]=0
+read=226341
+
+write[NOT_GC]=42
+write[GC]=0
+write=42
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=41
+oob_write[GC]=0
+oob_write=41
+
+erase=0
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=42
+oob_write_without_delay[GC]=0
+oob_write_without_delay=42
+
+**************   END FTL statistics   **************
+
+Done.
+Time used: 97.227867428
+Thu May  9 20:11:04 CEST 2013
+Done testing.

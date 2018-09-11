@@ -1,0 +1,20 @@
+#!/bin/bash
+args=("$@")
+SCANTABLE=${args[0]}
+WORKINGDIR=${args[1]}
+OUTPUTFILE=${args[2]}
+MEGAOUTPUTFILE=${args[3]}
+
+
+cd $WORKINGDIR
+
+# perform full scan : -u table -s s
+date >> $OUTPUTFILE
+echo "------------------" >> $OUTPUTFILE
+echo "Executing scan of table: "$SCANTABLE >> $OUTPUTFILE
+echo "------------------" >> $OUTPUTFILE
+STARTTIMESTAMP=`date +"%s.%N"`
+./sm_exec -u $SCANTABLE -s s >> $MEGAOUTPUTFILE
+ENDTIMESTAMP=`date +"%s.%N"`
+TIMEUSED=`echo $ENDTIMESTAMP-$STARTTIMESTAMP | bc -l`
+echo "Time used: "$TIMEUSED >> $OUTPUTFILE

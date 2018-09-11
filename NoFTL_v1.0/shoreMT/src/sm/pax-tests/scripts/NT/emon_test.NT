@@ -1,0 +1,82 @@
+#!/bin/sh
+
+# Selectivity 1%
+# Warm-up
+touch 10sel1_$1
+time -o 10sel1_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+# Measure
+time -o 10sel1_$1 file_scan_$1 -s q -L     0 -H   200 -Q 1 -S 5
+time -o 10sel1_$1 file_scan_$1 -s q -L  2000 -H  3200 -Q 1 -S 5
+time -o 10sel1_$1 file_scan_$1 -s q -L  4000 -H  5200 -Q 1 -S 5
+time -o 10sel1_$1 file_scan_$1 -s q -L  6000 -H  7200 -Q 1 -S 5
+time -o 10sel1_$1 file_scan_$1 -s q -L  8000 -H  9200 -Q 1 -S 5
+time -o 10sel1_$1 file_scan_$1 -s q -L 10000 -H 11200 -Q 1 -S 5
+time -o 10sel1_$1 file_scan_$1 -s q -L 12000 -H 13200 -Q 1 -S 5
+time -o 10sel1_$1 file_scan_$1 -s q -L 14000 -H 15200 -Q 1 -S 5
+time -o 10sel1_$1 file_scan_$1 -s q -L 16000 -H 17200 -Q 1 -S 5
+time -o 10sel1_$1 file_scan_$1 -s q -L 18000 -H 19200 -Q 1 -S 5
+
+# Selectivity 5%
+# Warm-up
+touch 10sel5_$1
+time -o 10sel5_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+# Measure
+time -o 10sel5_$1 file_scan_$1 -s q -L     0 -H  1000 -Q 1 -S 5
+time -o 10sel5_$1 file_scan_$1 -s q -L  2000 -H  3000 -Q 1 -S 5
+time -o 10sel5_$1 file_scan_$1 -s q -L  4000 -H  5000 -Q 1 -S 5
+time -o 10sel5_$1 file_scan_$1 -s q -L  6000 -H  7000 -Q 1 -S 5
+time -o 10sel5_$1 file_scan_$1 -s q -L  8000 -H  9000 -Q 1 -S 5
+time -o 10sel5_$1 file_scan_$1 -s q -L 10000 -H 11000 -Q 1 -S 5
+time -o 10sel5_$1 file_scan_$1 -s q -L 12000 -H 13000 -Q 1 -S 5
+time -o 10sel5_$1 file_scan_$1 -s q -L 14000 -H 15000 -Q 1 -S 5
+time -o 10sel5_$1 file_scan_$1 -s q -L 16000 -H 17000 -Q 1 -S 5
+time -o 10sel5_$1 file_scan_$1 -s q -L 18000 -H 19000 -Q 1 -S 5
+
+# Selectivity 10%
+# Warm-up
+touch 10sel10_$1
+time -o 10sel10_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+# Measure
+time -o 10sel10_$1 file_scan_$1 -s q -L     0 -H  2000 -Q 1 -S 5
+time -o 10sel10_$1 file_scan_$1 -s q -L  2000 -H  4000 -Q 1 -S 5
+time -o 10sel10_$1 file_scan_$1 -s q -L  4000 -H  6000 -Q 1 -S 5
+time -o 10sel10_$1 file_scan_$1 -s q -L  6000 -H  8000 -Q 1 -S 5
+time -o 10sel10_$1 file_scan_$1 -s q -L  8000 -H 10000 -Q 1 -S 5
+time -o 10sel10_$1 file_scan_$1 -s q -L 10000 -H 12000 -Q 1 -S 5
+time -o 10sel10_$1 file_scan_$1 -s q -L 12000 -H 14000 -Q 1 -S 5
+time -o 10sel10_$1 file_scan_$1 -s q -L 14000 -H 16000 -Q 1 -S 5
+time -o 10sel10_$1 file_scan_$1 -s q -L 16000 -H 18000 -Q 1 -S 5
+time -o 10sel10_$1 file_scan_$1 -s q -L 18000 -H 20000 -Q 1 -S 5
+
+# Selectivity 20%
+# Warm-up
+touch 10sel20_$1
+time -o 10sel20_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+# Measure
+time -o 10sel20_$1 file_scan_$1 -s q -L     0 -H  4000 -Q 1 -S 5
+time -o 10sel20_$1 file_scan_$1 -s q -L  4000 -H  8000 -Q 1 -S 5
+time -o 10sel20_$1 file_scan_$1 -s q -L  8000 -H 12000 -Q 1 -S 5
+time -o 10sel20_$1 file_scan_$1 -s q -L 12000 -H 16000 -Q 1 -S 5
+time -o 10sel20_$1 file_scan_$1 -s q -L 16000 -H 20000 -Q 1 -S 5
+
+# Selectivity 50%
+# Warm-up
+touch 10sel50_$1
+time -o 10sel50_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+# Measure
+time -o 10sel50_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 5
+time -o 10sel50_$1 file_scan_$1 -s q -L  5000 -H 15000 -Q 1 -S 5
+time -o 10sel50_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 5
+time -o 10sel50_$1 file_scan_$1 -s q -L  2000 -H 12000 -Q 1 -S 5
+time -o 10sel50_$1 file_scan_$1 -s q -L  8000 -H 18000 -Q 1 -S 5
+
+# Selectivity 100%
+# Warm-up
+touch 10sel100_$1
+time -o 10sel100_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+# Measure
+time -o 10sel100_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+time -o 10sel100_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+time -o 10sel100_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+time -o 10sel100_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+time -o 10sel100_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5

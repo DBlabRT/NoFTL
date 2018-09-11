@@ -1,0 +1,70 @@
+/* 
+ * Query class implementation
+ */
+
+#ifndef AHHJOIN_H
+#define AHHJOIN_H
+
+#include "sm_query.h"
+
+#define NUM_BUCKET	3
+#define MEM_QUOTA	64	// in MBytes
+#define HT_SIZE		37
+
+class hash_table_t;
+
+class ahhjoin_q :public query_c {
+  private:
+    uint4_t left_col;
+    uint4_t right_col;
+    uint4_t num_bucket;
+    uint4_t mem_quota;
+    uint4_t ht_size;
+    long long unsigned int result_tuples;
+
+    hash_table_t** hash_tables;
+
+    w_rc_t partition_left_nsm (stid_t* fids, uint4_t& b_valid);
+    w_rc_t partition_right_nsm (stid_t* fids, const uint4_t b_valid);
+
+    w_rc_t partition_left_pax (stid_t* fids, uint4_t& b_valid);
+    w_rc_t partition_right_pax (stid_t* fids, const uint4_t b_valid);
+
+    w_rc_t build_hash_table_nsm(stid_t& pfid, hash_table_t* htable);
+    w_rc_t probe_hash_table_nsm(stid_t& pfid, hash_table_t* htable);
+
+    w_rc_t build_hash_table_pax(stid_t& pfid, hash_table_t* htable);
+    w_rc_t probe_hash_table_pax(stid_t& pfid, hash_table_t* htable);
+
+    uint4_t freeze_hash_table_nsm(hash_table_t*& htable, append_file_i& af);
+    uint4_t freeze_hash_table_pax(hash_table_t*& htable, append_pfile_i& af);
+
+  public:
+    ahhjoin_q(char** table_name,
+	      uint4_t leftc,
+	      uint4_t rightc,
+	      uint4_t nbucket=NUM_BUCKET,
+	      uint4_t mquota=MEM_QUOTA,
+	      uint4_t htsz=HT_SIZE)
+    	: query_c(2, table_name, ss_m::t_cc_file)
+    {
+        left_col=leftc;
+	right_col=rightc;
+
+	mem_quota=mquota;
+	num_bucket=nbucket;
+	ht_size=htsz;
+
+	hash_tables = NULL;
+
+	result_tuples=0;
+    }
+
+    ~ahhjoin_q() {}
+
+    w_rc_t run_nsm();
+    w_rc_t run_pax();
+    w_rc_t run_dsm();
+};
+
+#endif

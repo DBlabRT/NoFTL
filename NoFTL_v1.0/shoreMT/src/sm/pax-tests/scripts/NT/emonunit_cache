@@ -1,0 +1,49 @@
+# Measurements with emon -- events file
+# Usage: emonunit_cache <outfile_without_extension>
+# Have to have set EMON_COMMAND to the executable!
+
+date
+
+emon -q -C \(INST_RETIRED:SUP, INST_RETIRED:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(INST_DECODED:SUP, INST_DECODED:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(CPU_CLK_UNHALTED:SUP, CPU_CLK_UNHALTED:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BR_INST_RETIRED:SUP, BR_INST_RETIRED:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BR_MISS_PRED_RETIRED:SUP, BR_MISS_PRED_RETIRED:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BR_INST_DECODED:SUP, BR_INST_DECODED:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BTB_MISSES:SUP, BTB_MISSES:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(DATA_MEM_REFS:SUP, DATA_MEM_REFS:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(PARTIAL_RAT_STALLS:SUP, PARTIAL_RAT_STALLS:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(RESOURCE_STALLS:SUP, RESOURCE_STALLS:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(IFU_IFETCH:SUP, IFU_IFETCH:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(IFU_IFETCH_MISS:SUP, IFU_IFETCH_MISS:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(IFU_MEM_STALL:SUP, IFU_MEM_STALL:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(ITLB_MISS:SUP, ITLB_MISS:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(DCU_MISS_OUTSTANDING:SUP, DCU_MISS_OUTSTANDING:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(L2_LINES_IN:SUP, L2_LINES_IN:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u0F:SUP, L2_RQSTS:u0F:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(L2_IFETCH:u0F:SUP, L2_IFETCH:u0F:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(L2_IFETCH:u01:SUP, L2_IFETCH:u01:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(L2_LD:u0F:SUP, L2_LD:u0F:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(L2_LD:u01:SUP, L2_LD:u01:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(L2_ST:u0F:SUP, L2_ST:u0F:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(L2_ST:u03:SUP, L2_ST:u03:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BUS_TRANS_IO:SUP, BUS_TRANS_IO:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BUS_REQ_OUTSTANDING:SUP, BUS_REQ_OUTSTANDING:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BUS_TRANS_BRD:SUP, BUS_TRANS_BRD:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BUS_TRANS_IFETCH:SUP, BUS_TRANS_IFETCH:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BUS_HITM_DRV:SUP, BUS_HITM_DRV:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(ILD_STALL:SUP, ILD_STALL:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(UOPS_RETIRED:SUP, UOPS_RETIRED:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(UOPS_RETIRED:c01:i01:SUP, UOPS_RETIRED:c01:i01:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(UOPS_RETIRED:c01:SUP, UOPS_RETIRED:c01:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(UOPS_RETIRED:c02:SUP, UOPS_RETIRED:c02:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(UOPS_RETIRED:c03:SUP, UOPS_RETIRED:c03:USER\) -F $1.out $EMON_COMMAND > NUL
+emon -q -C \(BUS_TRANS_ANY:SUP, BUS_TRANS_ANY:USER\) -F $1.out $EMON_COMMAND > NUL
+c:/natassa/resOnRags/measurements/common/emon2xls $1.out 74 $1.dat 2> $1.std
+
+date
+
+echo "Emonunit_cache done" 
+echo "-----------------------------------------------------------------------" 

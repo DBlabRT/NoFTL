@@ -1,0 +1,92 @@
+# <std-header style='data' orig-src='shore'>
+#
+#  $Id: exampleconfig,v 3.3 2000/09/28 21:12:58 natassa Exp $
+#
+# SHORE -- Scalable Heterogeneous Object REpository
+#
+# Copyright (c) 1994-99 Computer Sciences Department, University of
+#                       Wisconsin -- Madison
+# All Rights Reserved.
+#
+# Permission to use, copy, modify and distribute this software and its
+# documentation is hereby granted, provided that both the copyright
+# notice and this permission notice appear in all copies of the
+# software, derivative works or modified versions, and any portions
+# thereof, and that both notices appear in supporting documentation.
+#
+# THE AUTHORS AND THE COMPUTER SCIENCES DEPARTMENT OF THE UNIVERSITY
+# OF WISCONSIN - MADISON ALLOW FREE USE OF THIS SOFTWARE IN ITS
+# "AS IS" CONDITION, AND THEY DISCLAIM ANY LIABILITY OF ANY KIND
+# FOR ANY DAMAGES WHATSOEVER RESULTING FROM THE USE OF THIS SOFTWARE.
+#
+# This software was developed with support by the Advanced Research
+# Project Agency, ARPA order number 018 (formerly 8230), monitored by
+# the U.S. Army Research Laboratory under contract DAAB07-91-C-Q518.
+# Further funding for this work was provided by DARPA through
+# Rome Research Laboratory Contract No. F30602-97-2-0247.
+#
+#   -- do not edit anything above this line --   </std-header>
+
+#
+# STORAGE MANAGER OPTIONS
+#
+
+# Specify the log directory for all server programs
+#*.server.*.sm_logging: no
+#changed by hpl
+#?.server.*.sm_logging: no
+?.server.*.sm_logging: yes
+
+
+#
+# if you want your log to be on a different device,
+# change sm_logdir or make log a link somewhere into
+# the desired device
+#
+# Pass it as an option rather than here
+#*.server.*.sm_logdir: /tmp
+#?.server.*.sm_logdir: ./log
+?.server.*.sm_logdir: /media/shoreMT_logs
+
+# use sm_reformat_log to reinitialize a log that is a raw device
+# disabled when no logging
+# *.server.*.sm_reformat_log: no
+
+# Need 100000 to get through the scripts with 32KB pages
+# disabled when no logging
+# *.server.*.sm_logsize: 100000
+# added by hpl
+?.server.*.sm_logsize: 50000000
+
+# Specify the sm buffer pool size for any program
+# e.g. 4000 pages is 32 meg (popular values: 32768, 65536, 131072, 262144, 1048576):
+#*.server.*.sm_bufpoolsize: 131072
+?.server.*.sm_bufpoolsize: 10240
+
+# diskrw process ...
+# Making this relative assumes that we have a symbolic
+# link from . to wherever it's installed:
+#*.server.*.sm_diskrw: diskrw
+#?.server.*.sm_diskrw: diskrw
+#
+# Warn VAS when log is this % full -- set low for testing purposes
+#*.server.*.sm_log_warn: 45
+?.server.*.sm_log_warn: 99
+
+# Pass it as an option rather than here
+#perf.server.*.device_name: ./volumes/disk0
+perf.server.*.device_name: /dev/flashsim_block
+#perf.server.*.device_quota: 2000000
+perf.server.*.device_quota: 2022400
+
+perf.server.log_exceed.sm_logsize: 50000000
+
+##############################################
+# page layout: NSM (0) (N-ary Storage Model)
+#              PAX (1) (Partition Attributes Accross)
+# 	       HPL (2) (Hybrid page)
+#              DSM (3) (Decomposition Storage Model)
+#
+# Pass it as an option rather than here. This is the default
+perf.server.*.page_layout: 0
+

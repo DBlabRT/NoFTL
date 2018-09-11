@@ -1,0 +1,76 @@
+#!/bin/sh
+
+# Selectivity 50%
+
+# Warm-up
+touch 1_2_$1
+time -o 1_2_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 2
+# Measure
+time -o 1_2_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 2
+time -o 1_2_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 2
+time -o 1_2_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 2
+time -o 1_2_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 2
+
+# Warm-up
+touch 1_3_$1
+time -o 1_3_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 3
+# Measure
+time -o 1_3_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 3
+time -o 1_3_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 3
+time -o 1_3_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 3
+time -o 1_3_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 3
+
+# Warm-up
+touch 1_4_$1
+time -o 1_4_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 4
+# Measure
+time -o 1_4_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 4
+time -o 1_4_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 4
+time -o 1_4_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 4
+time -o 1_4_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 4
+
+# Warm-up
+touch 1_5_$1
+time -o 1_5_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 5
+# Measure
+time -o 1_5_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 5
+time -o 1_5_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 5
+time -o 1_5_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 5
+time -o 1_5_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 5
+
+# Warm-up
+touch 1_6_$1
+time -o 1_6_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 6
+# Measure
+time -o 1_6_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 6
+time -o 1_6_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 6
+time -o 1_6_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 6
+time -o 1_6_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 6
+
+# Warm-up
+touch 1_7_$1
+time -o 1_7_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 7
+# Measure
+time -o 1_7_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 7
+time -o 1_7_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 7
+time -o 1_7_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 7
+time -o 1_7_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 7
+
+# Warm-up
+touch 1_8_$1
+time -o 1_8_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 8
+# Measure
+time -o 1_8_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 8
+time -o 1_8_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 8
+time -o 1_8_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 8
+time -o 1_8_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 8
+
+# Warm-up
+touch 1_9_$1
+time -o 1_9_$1 file_scan_$1 -s q -L     0 -H 20000 -Q 1 -S 9
+# Measure
+time -o 1_9_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 9
+time -o 1_9_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 9
+time -o 1_9_$1 file_scan_$1 -s q -L     0 -H 10000 -Q 1 -S 9
+time -o 1_9_$1 file_scan_$1 -s q -L 10000 -H 20000 -Q 1 -S 9
+

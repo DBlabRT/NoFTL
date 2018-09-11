@@ -1,0 +1,232 @@
+# <program> <page_layout> <disk> <test> <param>
+# example: run 8num_2xl S 20
+# warmup
+
+# out_file_name = shore_PL_SEL_DIS_PROJ_PRED
+
+# Selectivity tests
+
+# 1%
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T S1"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_1_5_1_1
+
+# 5%
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T S5"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_5_5_1_1
+
+# 10%
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T S10"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_10_5_1_1
+
+# 20%
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T S20"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_20_5_1_1
+
+# 50%
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T S50"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_5_1_1
+
+# 100%
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T S100"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_100_5_1_1
+
+# Distance tests
+
+# 1
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T D1"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_1_1
+
+# 2
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T D2"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_2_1_1
+
+# 3
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T D3"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_3_1_1
+
+# 4
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T D4"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_4_1_1
+
+# 5
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T D5"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_5_1_1
+
+# 6
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T D6"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_6_1_1
+
+# 7
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T D7"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_7_1_1
+
+
+# Projectivity tests
+
+# 1
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T P1"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_1_1
+
+# 2
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T P2"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_2_1
+
+# 3
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T P3"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_3_1
+
+# 4
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T P4"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_4_1
+
+# 5
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T P5"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_5_1
+
+# 6
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T P6"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_6_1
+
+# 7
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl -page_layout 2 -T P7"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_7_1
+
+
+# Predicates tests
+
+# 1
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl_pred -page_layout 2 -T Q1"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_1_1
+
+# 2
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl_pred -page_layout 2 -T Q2"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_1_2
+
+# 3
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl_pred -page_layout 2 -T Q3"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_1_3
+
+# 4
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl_pred -page_layout 2 -T Q4"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_1_4
+
+# 5
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl_pred -page_layout 2 -T Q5"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_1_5
+
+# 6
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl_pred -page_layout 2 -T Q6"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_1_6
+
+# 7
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_pvp/disk_8num_2xl_pred -page_layout 2 -T Q7"
+echo $EMON_COMMAND >> timer_pvp
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_pvp
+echo "**********************" >> timer_pvp
+emonunit_cache SHORE_PVP_50_1_1_7
+

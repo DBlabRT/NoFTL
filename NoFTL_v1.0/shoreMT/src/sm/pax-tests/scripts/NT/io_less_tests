@@ -1,0 +1,106 @@
+# One last rowsize test
+# HP
+
+# 4 fields
+# load the data
+cp ex4 exampleconfig
+cp ffl4 ffl.txt
+file_scan -device_name e:/shore_volumes_hp/disk_4num_4xl -device_quota 500000
+ -load_from tables/4num_4xl.tbl -page_layout 0 -i
+export EMON_COMMAND="file_scan -device_name e:/shore_volumes_hp/disk_4num_4xl
+ -page_layout 0 -T D2"
+echo $EMON_COMMAND >> timer_rowsize
+echo $EMON_COMMAND
+$EMON_COMMAND >> timer_rowsize
+echo "**********************" >> timer_rowsize
+emonunit_cache SHORE_HP_50_2_1_1_4
+rm //e/shore_volumes_hp/disk_4num_4xl
+
+# out_file_name = shore_PL_SEL_DIS_PROJ_PRED_NFL_IO
+
+echo "I/O tests"
+
+# HP
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_hp/disk_8num_8xl -page_layout 0 -T S1"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_HP_1_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_HP_1_4_1_1_8_IO.out $EMON_COMMAND > NUL
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_hp/disk_8num_8xl -page_layout 0 -T S5"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_HP_5_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_HP_5_4_1_1_8_IO.out $EMON_COMMAND > NUL
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_hp/disk_8num_8xl -page_layout 0 -T S10"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_HP_10_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_HP_10_4_1_1_8_IO.out $EMON_COMMAND > NUL
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_hp/disk_8num_8xl -page_layout 0 -T S50"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_HP_50_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_HP_50_4_1_1_8_IO.out $EMON_COMMAND > NUL
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_hp/disk_8num_8xl -page_layout 0 -T S100"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_HP_100_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_HP_100_4_1_1_8_IO.out $EMON_COMMAND > NUL
+
+# PVP
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_pvp/disk_8num_8xl -page_layout 2 -T S1"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_PVP_1_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_PVP_1_4_1_1_8_IO.out $EMON_COMMAND > NUL
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_pvp/disk_8num_8xl -page_layout 2 -T S5"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_PVP_5_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_PVP_5_4_1_1_8_IO.out $EMON_COMMAND > NUL
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_pvp/disk_8num_8xl -page_layout 2 -T S10"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_PVP_10_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_PVP_10_4_1_1_8_IO.out $EMON_COMMAND > NUL
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_pvp/disk_8num_8xl -page_layout 2 -T S50"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_PVP_50_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_PVP_50_4_1_1_8_IO.out $EMON_COMMAND > NUL
+
+date
+export EMON_COMMAND="file_scan -device_name d:/shore_volumes_pvp/disk_8num_8xl -page_layout 2 -T S100"
+echo $EMON_COMMAND >> timer_IO
+$EMON_COMMAND >> timer_IO
+echo $EMON_COMMAND
+emon -q -C \(DCU_LINES_IN:SUP, DCU_LINES_IN:USER\) -F SHORE_PVP_100_4_1_1_8_IO.out  $EMON_COMMAND > NUL
+emon -q -C \(L2_RQSTS:u01:SUP, L2_RQSTS:u01:USER\) -F SHORE_PVP_100_4_1_1_8_IO.out $EMON_COMMAND > NUL
+

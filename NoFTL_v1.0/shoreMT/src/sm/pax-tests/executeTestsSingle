@@ -1,0 +1,18 @@
+#!/bin/bash
+args=("$@")
+QUERYNUMBER=${args[0]}
+WORKINGDIR=${args[1]}
+OUTPUTFILE=${args[2]}
+
+cd $WORKINGDIR
+
+date >> $OUTPUTFILE
+echo "------------------" >> $OUTPUTFILE
+echo "Executing query "$TESTNUMBER >> $OUTPUTFILE
+echo "------------------" >> $OUTPUTFILE
+STARTTIMESTAMP=`date +"%s.%N"`
+./sm_exec -T$QUERYNUMBER | tee -a  $OUTPUTFILE
+ENDTIMESTAMP=`date +"%s.%N"`
+TIMEUSED=`echo $ENDTIMESTAMP-$STARTTIMESTAMP | bc -l`
+echo "Time used: "$TIMEUSED >> $OUTPUTFILE
+

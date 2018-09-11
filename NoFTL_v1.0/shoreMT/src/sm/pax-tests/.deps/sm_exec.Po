@@ -1,0 +1,740 @@
+sm_exec.o: sm_exec.cpp ../../../src/fc/w_defines.h \
+ ../../../config/shore.def ../../../config/shore-config.h \
+ /usr/include/c++/4.6/cerrno /usr/include/errno.h /usr/include/features.h \
+ /usr/include/x86_64-linux-gnu/bits/predefs.h \
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+ /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/include/c++/4.6/cstddef \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++config.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/os_defines.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/cpu_defines.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stddef.h \
+ /usr/include/c++/4.6/cstdlib /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/xlocale.h \
+ /usr/include/x86_64-linux-gnu/sys/types.h \
+ /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/time.h \
+ /usr/include/x86_64-linux-gnu/sys/select.h \
+ /usr/include/x86_64-linux-gnu/bits/select.h \
+ /usr/include/x86_64-linux-gnu/bits/sigset.h \
+ /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/bits/select2.h \
+ /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
+ /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/c++/4.6/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd.h ../../../src/fc/w_stream.h \
+ ../../../src/fc/w_defines.h /usr/include/c++/4.6/fstream \
+ /usr/include/c++/4.6/istream /usr/include/c++/4.6/ios \
+ /usr/include/c++/4.6/iosfwd /usr/include/c++/4.6/bits/stringfwd.h \
+ /usr/include/c++/4.6/bits/postypes.h /usr/include/c++/4.6/cwchar \
+ /usr/include/wchar.h /usr/include/stdio.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdarg.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar2.h \
+ /usr/include/c++/4.6/exception /usr/include/c++/4.6/bits/char_traits.h \
+ /usr/include/c++/4.6/bits/stl_algobase.h \
+ /usr/include/c++/4.6/bits/functexcept.h \
+ /usr/include/c++/4.6/bits/exception_defines.h \
+ /usr/include/c++/4.6/bits/cpp_type_traits.h \
+ /usr/include/c++/4.6/ext/type_traits.h \
+ /usr/include/c++/4.6/ext/numeric_traits.h \
+ /usr/include/c++/4.6/bits/stl_pair.h /usr/include/c++/4.6/bits/move.h \
+ /usr/include/c++/4.6/bits/concept_check.h \
+ /usr/include/c++/4.6/bits/stl_iterator_base_types.h \
+ /usr/include/c++/4.6/bits/stl_iterator_base_funcs.h \
+ /usr/include/c++/4.6/bits/stl_iterator.h \
+ /usr/include/c++/4.6/debug/debug.h /usr/include/c++/4.6/bits/localefwd.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++locale.h \
+ /usr/include/c++/4.6/clocale /usr/include/locale.h \
+ /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/4.6/cctype \
+ /usr/include/ctype.h /usr/include/c++/4.6/bits/ios_base.h \
+ /usr/include/c++/4.6/ext/atomicity.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/gthr.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/gthr-default.h \
+ /usr/include/pthread.h /usr/include/sched.h \
+ /usr/include/x86_64-linux-gnu/bits/sched.h \
+ /usr/include/x86_64-linux-gnu/bits/timex.h \
+ /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/atomic_word.h \
+ /usr/include/c++/4.6/bits/locale_classes.h /usr/include/c++/4.6/string \
+ /usr/include/c++/4.6/bits/allocator.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++allocator.h \
+ /usr/include/c++/4.6/ext/new_allocator.h /usr/include/c++/4.6/new \
+ /usr/include/c++/4.6/bits/ostream_insert.h \
+ /usr/include/c++/4.6/bits/cxxabi_forced.h \
+ /usr/include/c++/4.6/bits/stl_function.h \
+ /usr/include/c++/4.6/backward/binders.h \
+ /usr/include/c++/4.6/bits/range_access.h \
+ /usr/include/c++/4.6/bits/basic_string.h \
+ /usr/include/c++/4.6/initializer_list \
+ /usr/include/c++/4.6/bits/basic_string.tcc \
+ /usr/include/c++/4.6/bits/locale_classes.tcc \
+ /usr/include/c++/4.6/streambuf /usr/include/c++/4.6/bits/streambuf.tcc \
+ /usr/include/c++/4.6/bits/basic_ios.h \
+ /usr/include/c++/4.6/bits/locale_facets.h /usr/include/c++/4.6/cwctype \
+ /usr/include/wctype.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_base.h \
+ /usr/include/c++/4.6/bits/streambuf_iterator.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_inline.h \
+ /usr/include/c++/4.6/bits/locale_facets.tcc \
+ /usr/include/c++/4.6/bits/basic_ios.tcc /usr/include/c++/4.6/ostream \
+ /usr/include/c++/4.6/bits/ostream.tcc \
+ /usr/include/c++/4.6/bits/istream.tcc \
+ /usr/include/c++/4.6/bits/codecvt.h /usr/include/c++/4.6/cstdio \
+ /usr/include/libio.h /usr/include/_G_config.h \
+ /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio2.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/basic_file.h \
+ /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++io.h \
+ /usr/include/c++/4.6/bits/fstream.tcc /usr/include/c++/4.6/iomanip \
+ /usr/include/c++/4.6/iostream ../../../src/fc/w_strstream.h \
+ ../../../src/fc/w_workaround.h ../../../src/fc/w_compat_strstream.h \
+ /usr/include/c++/4.6/cstring /usr/include/string.h \
+ /usr/include/x86_64-linux-gnu/bits/string3.h \
+ /usr/include/c++/4.6/cassert /usr/include/assert.h \
+ ../../../src/common/sm_vas.h ../../../src/fc/w.h \
+ ../../../src/fc/w_base.h ../../../src/fc/w_autodel.h \
+ ../../../src/fc/w_error.h ../../../src/fc/w_base.h \
+ ../../../src/fc/fc_error_enum_gen.h ../../../src/fc/tls.h \
+ ../../../src/fc/w_rc.h ../../../src/fc/w_error.h \
+ ../../../src/fc/w_minmax.h /usr/include/x86_64-linux-gnu/sys/param.h \
+ /usr/include/linux/param.h /usr/include/x86_64-linux-gnu/asm/param.h \
+ /usr/include/asm-generic/param.h ../../../src/fc/w_list.h \
+ ../../../src/fc/w_hash.h ../../../src/common/option.h \
+ ../../../src/common/opt_error_def_gen.h ../../../src/common/basics.h \
+ ../../../src/common/lid_t.h ../../../src/common/vec_t.h \
+ ../../../src/common/tid_t.h ../../../src/fc/atomic_templates.h \
+ ../../../src/atomic_ops/atomic_ops.h \
+ ../../../src/atomic_ops/atomic_ops_impl.h /usr/include/inttypes.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h /usr/include/stdint.h \
+ ../../../src/common/w_opaque.h ../../../src/common/stid_t.h \
+ ../../../src/common/vid_t.h ../../../src/common/devid_t.h \
+ ../../../src/sm/sm.h ../../../src/sm/sm_int_4.h \
+ ../../../src/sm/sm_int_3.h ../../../src/sm/sm_int_2.h \
+ ../../../src/sm/sm_int_1.h ../../../src/sm/sm_int_0.h \
+ ../../../src/fc/w_debug.h ../../../src/fc/errlog.h \
+ ../../../src/sm/sysdefs.h ../../../src/sthread/sthread.h \
+ ../../../src/fc/stime.h /usr/include/x86_64-linux-gnu/sys/time.h \
+ ../../../src/fc/gethrtime.h ../../../src/fc/vtable.h \
+ ../../../src/sthread/sdisk.h ../../../src/sthread/st_error_enum_gen.h \
+ ../../../src/sthread/os_interface.h /usr/include/dirent.h \
+ /usr/include/x86_64-linux-gnu/bits/dirent.h \
+ ../../../src/sthread/mcs_lock.h ../../../src/sthread/srwlock.h \
+ ../../../src/common/basics.h ../../../src/common/vec_t.h \
+ ../../../src/common/latch.h /usr/include/c++/4.6/list \
+ /usr/include/c++/4.6/bits/stl_list.h /usr/include/c++/4.6/bits/list.tcc \
+ ../../../src/common/lid_t.h ../../../src/sm/smthread.h \
+ ../../../src/sm/sm_base.h ../../../src/common/opt_error_def_gen.h \
+ ../../../src/sm/e_error_enum_gen.h ../../../src/fc/w_bitvector.h \
+ ../../../src/common/tid_t.h ../../../src/sm/smstats.h \
+ ../../../src/sm/sm_stats_t_struct_gen.h \
+ ../../../src/sm/bf_htab_stats_t_struct_gen.h \
+ ../../../src/sm/sm_du_stats.h ../../../src/sm/smstats.h \
+ ../../../src/sm/sm_s.h ../../../src/common/lsn.h \
+ ../../../src/sm/lexify.h ../../../src/fc/nbox.h ../../../src/sm/sort_s.h \
+ ../../../src/sm/prec.h ../../../src/sm/hpl_rec.h \
+ ../../../src/sm/sm_escalation.h ../../../src/sm/pin.h \
+ ../../../src/sm/file_s.h ../../../src/sm/page_alias.h \
+ ../../../src/sm/prec_pin.h ../../../src/sm/sm_s.h ../../../src/sm/pin.h \
+ ../../../src/sm/pfile_p.h ../../../src/sm/page.h \
+ ../../../src/sm/page_s.h ../../../src/sm/bf.h ../../../src/sm/bf_s.h \
+ ../../../src/sm/page_s.h ../../../src/sm/pfile_hdr.h /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_val.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_valf.h \
+ /usr/include/x86_64-linux-gnu/bits/huge_vall.h \
+ /usr/include/x86_64-linux-gnu/bits/inf.h \
+ /usr/include/x86_64-linux-gnu/bits/nan.h \
+ /usr/include/x86_64-linux-gnu/bits/mathdef.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/mathinline.h \
+ /usr/include/x86_64-linux-gnu/bits/math-finite.h \
+ ../../../src/common/bitmap.h ../../../src/common/rbitmap.h \
+ ../../../src/common/dual_assert.h ../../../src/sm/hpl_rec_pin.h \
+ ../../../src/sm/hpl_p.h ../../../src/sm/hpl_hdr.h ../../../src/sm/scan.h \
+ ../../../src/sm/xct_dependent.h ../../../src/sm/sdesc.h \
+ ../../../src/sm/pfile_scan.h ../../../src/sm/scan.h \
+ /usr/include/memory.h ../../../src/sm/hpl_scan.h \
+ ../../../src/common/kvl_t.h ../../../src/sm/lock_s.h \
+ ../../../src/sm/lock_s_inline.h ../../../src/fc/w_hashing.h \
+ ../../../src/sm/sort.h sm_exec.h query_util.h sm_query.h ahhjoin.h \
+ sm_tpch.h ../../../src/sm/TimeMeasure.h
+
+../../../src/fc/w_defines.h:
+
+../../../config/shore.def:
+
+../../../config/shore-config.h:
+
+/usr/include/c++/4.6/cerrno:
+
+/usr/include/errno.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/bits/predefs.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/c++/4.6/cstddef:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++config.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/os_defines.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/cpu_defines.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.6/include/stddef.h:
+
+/usr/include/c++/4.6/cstdlib:
+
+/usr/include/stdlib.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/time.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigset.h:
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
+/usr/include/x86_64-linux-gnu/sys/sysmacros.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
+/usr/include/c++/4.6/climits:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed/limits.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
+
+../../../src/fc/w_stream.h:
+
+../../../src/fc/w_defines.h:
+
+/usr/include/c++/4.6/fstream:
+
+/usr/include/c++/4.6/istream:
+
+/usr/include/c++/4.6/ios:
+
+/usr/include/c++/4.6/iosfwd:
+
+/usr/include/c++/4.6/bits/stringfwd.h:
+
+/usr/include/c++/4.6/bits/postypes.h:
+
+/usr/include/c++/4.6/cwchar:
+
+/usr/include/wchar.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
+
+/usr/include/c++/4.6/exception:
+
+/usr/include/c++/4.6/bits/char_traits.h:
+
+/usr/include/c++/4.6/bits/stl_algobase.h:
+
+/usr/include/c++/4.6/bits/functexcept.h:
+
+/usr/include/c++/4.6/bits/exception_defines.h:
+
+/usr/include/c++/4.6/bits/cpp_type_traits.h:
+
+/usr/include/c++/4.6/ext/type_traits.h:
+
+/usr/include/c++/4.6/ext/numeric_traits.h:
+
+/usr/include/c++/4.6/bits/stl_pair.h:
+
+/usr/include/c++/4.6/bits/move.h:
+
+/usr/include/c++/4.6/bits/concept_check.h:
+
+/usr/include/c++/4.6/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/4.6/bits/stl_iterator_base_funcs.h:
+
+/usr/include/c++/4.6/bits/stl_iterator.h:
+
+/usr/include/c++/4.6/debug/debug.h:
+
+/usr/include/c++/4.6/bits/localefwd.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++locale.h:
+
+/usr/include/c++/4.6/clocale:
+
+/usr/include/locale.h:
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/c++/4.6/cctype:
+
+/usr/include/ctype.h:
+
+/usr/include/c++/4.6/bits/ios_base.h:
+
+/usr/include/c++/4.6/ext/atomicity.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/gthr.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/gthr-default.h:
+
+/usr/include/pthread.h:
+
+/usr/include/sched.h:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:
+
+/usr/include/x86_64-linux-gnu/bits/timex.h:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/atomic_word.h:
+
+/usr/include/c++/4.6/bits/locale_classes.h:
+
+/usr/include/c++/4.6/string:
+
+/usr/include/c++/4.6/bits/allocator.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++allocator.h:
+
+/usr/include/c++/4.6/ext/new_allocator.h:
+
+/usr/include/c++/4.6/new:
+
+/usr/include/c++/4.6/bits/ostream_insert.h:
+
+/usr/include/c++/4.6/bits/cxxabi_forced.h:
+
+/usr/include/c++/4.6/bits/stl_function.h:
+
+/usr/include/c++/4.6/backward/binders.h:
+
+/usr/include/c++/4.6/bits/range_access.h:
+
+/usr/include/c++/4.6/bits/basic_string.h:
+
+/usr/include/c++/4.6/initializer_list:
+
+/usr/include/c++/4.6/bits/basic_string.tcc:
+
+/usr/include/c++/4.6/bits/locale_classes.tcc:
+
+/usr/include/c++/4.6/streambuf:
+
+/usr/include/c++/4.6/bits/streambuf.tcc:
+
+/usr/include/c++/4.6/bits/basic_ios.h:
+
+/usr/include/c++/4.6/bits/locale_facets.h:
+
+/usr/include/c++/4.6/cwctype:
+
+/usr/include/wctype.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_base.h:
+
+/usr/include/c++/4.6/bits/streambuf_iterator.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/ctype_inline.h:
+
+/usr/include/c++/4.6/bits/locale_facets.tcc:
+
+/usr/include/c++/4.6/bits/basic_ios.tcc:
+
+/usr/include/c++/4.6/ostream:
+
+/usr/include/c++/4.6/bits/ostream.tcc:
+
+/usr/include/c++/4.6/bits/istream.tcc:
+
+/usr/include/c++/4.6/bits/codecvt.h:
+
+/usr/include/c++/4.6/cstdio:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/basic_file.h:
+
+/usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++io.h:
+
+/usr/include/c++/4.6/bits/fstream.tcc:
+
+/usr/include/c++/4.6/iomanip:
+
+/usr/include/c++/4.6/iostream:
+
+../../../src/fc/w_strstream.h:
+
+../../../src/fc/w_workaround.h:
+
+../../../src/fc/w_compat_strstream.h:
+
+/usr/include/c++/4.6/cstring:
+
+/usr/include/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/string3.h:
+
+/usr/include/c++/4.6/cassert:
+
+/usr/include/assert.h:
+
+../../../src/common/sm_vas.h:
+
+../../../src/fc/w.h:
+
+../../../src/fc/w_base.h:
+
+../../../src/fc/w_autodel.h:
+
+../../../src/fc/w_error.h:
+
+../../../src/fc/w_base.h:
+
+../../../src/fc/fc_error_enum_gen.h:
+
+../../../src/fc/tls.h:
+
+../../../src/fc/w_rc.h:
+
+../../../src/fc/w_error.h:
+
+../../../src/fc/w_minmax.h:
+
+/usr/include/x86_64-linux-gnu/sys/param.h:
+
+/usr/include/linux/param.h:
+
+/usr/include/x86_64-linux-gnu/asm/param.h:
+
+/usr/include/asm-generic/param.h:
+
+../../../src/fc/w_list.h:
+
+../../../src/fc/w_hash.h:
+
+../../../src/common/option.h:
+
+../../../src/common/opt_error_def_gen.h:
+
+../../../src/common/basics.h:
+
+../../../src/common/lid_t.h:
+
+../../../src/common/vec_t.h:
+
+../../../src/common/tid_t.h:
+
+../../../src/fc/atomic_templates.h:
+
+../../../src/atomic_ops/atomic_ops.h:
+
+../../../src/atomic_ops/atomic_ops_impl.h:
+
+/usr/include/inttypes.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h:
+
+/usr/include/stdint.h:
+
+../../../src/common/w_opaque.h:
+
+../../../src/common/stid_t.h:
+
+../../../src/common/vid_t.h:
+
+../../../src/common/devid_t.h:
+
+../../../src/sm/sm.h:
+
+../../../src/sm/sm_int_4.h:
+
+../../../src/sm/sm_int_3.h:
+
+../../../src/sm/sm_int_2.h:
+
+../../../src/sm/sm_int_1.h:
+
+../../../src/sm/sm_int_0.h:
+
+../../../src/fc/w_debug.h:
+
+../../../src/fc/errlog.h:
+
+../../../src/sm/sysdefs.h:
+
+../../../src/sthread/sthread.h:
+
+../../../src/fc/stime.h:
+
+/usr/include/x86_64-linux-gnu/sys/time.h:
+
+../../../src/fc/gethrtime.h:
+
+../../../src/fc/vtable.h:
+
+../../../src/sthread/sdisk.h:
+
+../../../src/sthread/st_error_enum_gen.h:
+
+../../../src/sthread/os_interface.h:
+
+/usr/include/dirent.h:
+
+/usr/include/x86_64-linux-gnu/bits/dirent.h:
+
+../../../src/sthread/mcs_lock.h:
+
+../../../src/sthread/srwlock.h:
+
+../../../src/common/basics.h:
+
+../../../src/common/vec_t.h:
+
+../../../src/common/latch.h:
+
+/usr/include/c++/4.6/list:
+
+/usr/include/c++/4.6/bits/stl_list.h:
+
+/usr/include/c++/4.6/bits/list.tcc:
+
+../../../src/common/lid_t.h:
+
+../../../src/sm/smthread.h:
+
+../../../src/sm/sm_base.h:
+
+../../../src/common/opt_error_def_gen.h:
+
+../../../src/sm/e_error_enum_gen.h:
+
+../../../src/fc/w_bitvector.h:
+
+../../../src/common/tid_t.h:
+
+../../../src/sm/smstats.h:
+
+../../../src/sm/sm_stats_t_struct_gen.h:
+
+../../../src/sm/bf_htab_stats_t_struct_gen.h:
+
+../../../src/sm/sm_du_stats.h:
+
+../../../src/sm/smstats.h:
+
+../../../src/sm/sm_s.h:
+
+../../../src/common/lsn.h:
+
+../../../src/sm/lexify.h:
+
+../../../src/fc/nbox.h:
+
+../../../src/sm/sort_s.h:
+
+../../../src/sm/prec.h:
+
+../../../src/sm/hpl_rec.h:
+
+../../../src/sm/sm_escalation.h:
+
+../../../src/sm/pin.h:
+
+../../../src/sm/file_s.h:
+
+../../../src/sm/page_alias.h:
+
+../../../src/sm/prec_pin.h:
+
+../../../src/sm/sm_s.h:
+
+../../../src/sm/pin.h:
+
+../../../src/sm/pfile_p.h:
+
+../../../src/sm/page.h:
+
+../../../src/sm/page_s.h:
+
+../../../src/sm/bf.h:
+
+../../../src/sm/bf_s.h:
+
+../../../src/sm/page_s.h:
+
+../../../src/sm/pfile_hdr.h:
+
+/usr/include/math.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_val.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_valf.h:
+
+/usr/include/x86_64-linux-gnu/bits/huge_vall.h:
+
+/usr/include/x86_64-linux-gnu/bits/inf.h:
+
+/usr/include/x86_64-linux-gnu/bits/nan.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathdef.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathinline.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-finite.h:
+
+../../../src/common/bitmap.h:
+
+../../../src/common/rbitmap.h:
+
+../../../src/common/dual_assert.h:
+
+../../../src/sm/hpl_rec_pin.h:
+
+../../../src/sm/hpl_p.h:
+
+../../../src/sm/hpl_hdr.h:
+
+../../../src/sm/scan.h:
+
+../../../src/sm/xct_dependent.h:
+
+../../../src/sm/sdesc.h:
+
+../../../src/sm/pfile_scan.h:
+
+../../../src/sm/scan.h:
+
+/usr/include/memory.h:
+
+../../../src/sm/hpl_scan.h:
+
+../../../src/common/kvl_t.h:
+
+../../../src/sm/lock_s.h:
+
+../../../src/sm/lock_s_inline.h:
+
+../../../src/fc/w_hashing.h:
+
+../../../src/sm/sort.h:
+
+sm_exec.h:
+
+query_util.h:
+
+sm_query.h:
+
+ahhjoin.h:
+
+sm_tpch.h:
+
+../../../src/sm/TimeMeasure.h:

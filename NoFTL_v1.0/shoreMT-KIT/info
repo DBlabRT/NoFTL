@@ -1,0 +1,22 @@
+ERROR: cannot open log file: 
+1. error in sdisk_unix.cpp:214 Operating system error  [0x10001] --- Permission denied
+	additional information: Offending file: log-tpcc-1/log.1
+
+
+ERROR: cannot open log file: 
+1. error in sdisk_nand.cpp:115 Invalid argument to thread I/O operation [0x40004]
+
+read(8192)
+cannot write garbage block 
+Error: could not open the log directory /dev/flashsim_char
+	Note: the log directory is specified using
+	      the sm_logdir option.
+Error: could not open the log directory /dev/flashsim_char
+	Note: the log directory is specified using
+	      the sm_logdir option.
+Error: could not open the log directory /dev/flashsim_char
+	Note: the log directory is specified using
+	      the sm_logdir option.
+ERROR: could not flush log buf: fd=4000 xfersize=8192 vec parts:  7816 392 40 8136:
+1. error in io.cpp:1035 Short I/O [0x40006]
+

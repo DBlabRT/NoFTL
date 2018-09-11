@@ -1,0 +1,230 @@
+Loading table lineitem.
+Getting SSM config info for record size ...
+Formatting and mounting device: /dev/flashsim_block with 1523200KB quota ...
+FTL state mode has been read from the file. It is LOAD_FROM_FILE RUN_TRACE_ONCE SAVE_TO_FILE 
+FTL start warm-up trace!
+FTL start warm-up successfully finished!
+Writing new ftl_sate_mode 5 to a file!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=0
+read[GC]=0
+read=0
+
+write[NOT_GC]=1510400
+write[GC]=0
+write=1510400
+
+oob_read[NOT_GC]=0
+oob_read[GC]=0
+oob_read=0
+
+oob_write[NOT_GC]=1271602
+oob_write[GC]=0
+oob_write=1271602
+
+erase=17460
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=1510400
+oob_write_without_delay[GC]=0
+oob_write_without_delay=1510400
+
+**************   END FTL statistics   **************
+
+Generating new lvid: 
+Generated lvid 127.0.1.1:1368122368
+Creating a volume on the device with 1523200KB quota.VolID: 1
+num_exts:47600
+    with local handle(phys volid) 1
+Thu May  9 19:59:28 CEST 2013
+Thu May  9 19:59:29 CEST 2013
+Thu May  9 19:59:31 CEST 2013
+Thu May  9 19:59:33 CEST 2013
+Thu May  9 19:59:35 CEST 2013
+Thu May  9 19:59:37 CEST 2013
+Thu May  9 19:59:40 CEST 2013
+Thu May  9 19:59:43 CEST 2013
+Thu May  9 19:59:46 CEST 2013
+Thu May  9 19:59:48 CEST 2013
+Thu May  9 19:59:51 CEST 2013
+Thu May  9 19:59:54 CEST 2013
+Thu May  9 19:59:57 CEST 2013
+Thu May  9 20:00:00 CEST 2013
+Thu May  9 20:00:03 CEST 2013
+Thu May  9 20:00:06 CEST 2013
+Thu May  9 20:00:09 CEST 2013
+Thu May  9 20:00:12 CEST 2013
+Thu May  9 20:00:15 CEST 2013
+Thu May  9 20:00:18 CEST 2013
+Thu May  9 20:00:21 CEST 2013
+Thu May  9 20:00:25 CEST 2013
+Thu May  9 20:00:28 CEST 2013
+Thu May  9 20:00:31 CEST 2013
+Thu May  9 20:00:35 CEST 2013
+Thu May  9 20:00:38 CEST 2013
+Thu May  9 20:00:41 CEST 2013
+Thu May  9 20:00:44 CEST 2013
+Thu May  9 20:00:47 CEST 2013
+Thu May  9 20:00:50 CEST 2013
+Thu May  9 20:00:54 CEST 2013
+Thu May  9 20:00:57 CEST 2013
+Thu May  9 20:01:00 CEST 2013
+Thu May  9 20:01:03 CEST 2013
+Thu May  9 20:01:06 CEST 2013
+Thu May  9 20:01:09 CEST 2013
+Thu May  9 20:01:13 CEST 2013
+Thu May  9 20:01:16 CEST 2013
+Thu May  9 20:01:19 CEST 2013
+Thu May  9 20:01:22 CEST 2013
+Thu May  9 20:01:26 CEST 2013
+Thu May  9 20:01:29 CEST 2013
+Thu May  9 20:01:32 CEST 2013
+Thu May  9 20:01:35 CEST 2013
+Thu May  9 20:01:39 CEST 2013
+Thu May  9 20:01:42 CEST 2013
+Thu May  9 20:01:45 CEST 2013
+Thu May  9 20:01:49 CEST 2013
+Thu May  9 20:01:52 CEST 2013
+Thu May  9 20:01:55 CEST 2013
+Thu May  9 20:01:58 CEST 2013
+Thu May  9 20:02:01 CEST 2013
+Thu May  9 20:02:05 CEST 2013
+Thu May  9 20:02:08 CEST 2013
+Thu May  9 20:02:11 CEST 2013
+Thu May  9 20:02:14 CEST 2013
+Thu May  9 20:02:17 CEST 2013
+Thu May  9 20:02:20 CEST 2013
+Thu May  9 20:02:24 CEST 2013
+Thu May  9 20:02:27 CEST 2013
+Thu May  9 20:02:30 CEST 2013
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=761
+read[GC]=118936
+read=119697
+
+write[NOT_GC]=218725
+write[GC]=118936
+write=337661
+
+oob_read[NOT_GC]=0
+oob_read[GC]=118936
+oob_read=118936
+
+oob_write[NOT_GC]=138177
+oob_write[GC]=0
+oob_write=138177
+
+erase=5276
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=218725
+oob_write_without_delay[GC]=118936
+oob_write_without_delay=337661
+
+**************   END FTL statistics   **************
+
+Done.
+Loading table orders.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+Thu May  9 20:04:07 CEST 2013
+Thu May  9 20:04:08 CEST 2013
+Thu May  9 20:04:11 CEST 2013
+Thu May  9 20:04:14 CEST 2013
+Thu May  9 20:04:16 CEST 2013
+Thu May  9 20:04:19 CEST 2013
+Thu May  9 20:04:21 CEST 2013
+Thu May  9 20:04:24 CEST 2013
+Thu May  9 20:04:27 CEST 2013
+Thu May  9 20:04:29 CEST 2013
+Thu May  9 20:04:32 CEST 2013
+Thu May  9 20:04:35 CEST 2013
+Thu May  9 20:04:38 CEST 2013
+Thu May  9 20:04:41 CEST 2013
+Thu May  9 20:04:45 CEST 2013
+Thu May  9 20:04:48 CEST 2013
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=218774
+read[GC]=33655
+read=252429
+
+write[NOT_GC]=48089
+write[GC]=33655
+write=81744
+
+oob_read[NOT_GC]=0
+oob_read[GC]=33655
+oob_read=33655
+
+oob_write[NOT_GC]=30311
+oob_write[GC]=0
+oob_write=30311
+
+erase=1278
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=48089
+oob_write_without_delay[GC]=33655
+oob_write_without_delay=81744
+
+**************   END FTL statistics   **************
+
+Done.
+Loading table part.
+FTL state mode has been read from the file. It is LOAD_FROM_FILE SAVE_TO_FILE 
+FTL state successfully loaded from files!
+Getting SSM config info for record size ...
+Thu May  9 20:05:13 CEST 2013
+Thu May  9 20:05:15 CEST 2013
+Thu May  9 20:05:19 CEST 2013
+FTL state successfully saved to files!
+
+****************   FTL statistics   ****************
+
+read[NOT_GC]=48508
+read[GC]=7695
+read=56203
+
+write[NOT_GC]=7426
+write[GC]=7695
+write=15121
+
+oob_read[NOT_GC]=0
+oob_read[GC]=7695
+oob_read=7695
+
+oob_write[NOT_GC]=4672
+oob_write[GC]=0
+oob_write=4672
+
+erase=236
+
+oob_read_without_delay[NOT_GC]=0
+oob_read_without_delay[GC]=0
+oob_read_without_delay=0
+
+oob_write_without_delay[NOT_GC]=7426
+oob_write_without_delay[GC]=7695
+oob_write_without_delay=15121
+
+**************   END FTL statistics   **************
+
+Done.

@@ -1,0 +1,2 @@
+file_scan -device_name e:/shore_volumes_pvp/disk0 -sm_logdir e:/shore_log_pvp -page_layout 2 $*
+

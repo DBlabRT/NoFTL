@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# configure
+#
+TOPLEVELDIR=/home/flashydb/workspace-hpl
+TEMPDIR=/tmp
+#
+# End of configure
+#
+CURRENTDATE=`date +%Y%m%d`
+HOSTNAME=`uname -n`
+ARCHIVENAME=workplace-hpl.$HOSTNAME.$CURRENTDATE
+
+
+echo "Starting archive for "$HOSTNAME
+cd $TEMPDIR
+
+#cleanup old versions
+mv $ARCHIVENAME.tar.bz2 $ARCHIVENAME.old.tar.bz2
+
+echo "Creating tarball: "$ARCHIVENAME".tar"
+tar -cf $ARCHIVENAME.tar $TOPLEVELDIR
+
+echo "Compressing: "$ARCHIVENAME".tar.bz2"
+bzip2 $ARCHIVENAME.tar
