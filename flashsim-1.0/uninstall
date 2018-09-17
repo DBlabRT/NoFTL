@@ -1,0 +1,30 @@
+if mountpoint -q /media/flash_block
+then
+  umount /media/flash_block
+fi
+
+###### names of char devices
+char_dev_module="flashsim_char"
+block_dev_stat_module="flashsim_block_stat"
+char_dev_stat_module="flashsim_char_stat"
+
+###### delete old entries in /dev/
+if [ -e /dev/$char_dev_module ]
+then
+  rm /dev/$char_dev_module
+fi
+
+if [ -e /dev/$block_dev_stat_module ]
+then
+  rm /dev/$block_dev_stat_module
+fi
+
+if [ -e /dev/$char_dev_stat_module ]  
+then
+  rm /dev/$char_dev_stat_module
+fi
+
+###### remove whole module
+rmmod flashsim
+
+

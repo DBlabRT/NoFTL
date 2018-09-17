@@ -1,0 +1,147 @@
+#!/bin/sh
+
+insmod flashsim.ko \
+\
+block_device_major_number=0 \
+block_device_sector_size=4096 \
+block_device_num_blocks=4096 \
+block_device_sectors_per_block=64 \
+block_device_delay_mode=1 \
+block_device_request_statistics_mode=0 \
+block_device_max_req_stat_entries=1000000 \
+block_device_read_sector_latency_us=50 \
+block_device_program_sector_latency_us=250 \
+block_device_erase_block_latency_us=700 \
+block_device_oob_size=32 \
+block_device_read_oob_latency_us=0 \
+block_device_program_oob_latency_us=0 \
+block_device_ftl_mode=0 \
+block_device_cache_level_1=0 \
+block_device_cache_level_2=0 \
+block_device_num_extra_blocks=0 \
+\
+char_device_major_number=248 \
+char_device_sector_size=4096 \
+char_device_num_blocks=0 \
+char_device_sectors_per_block=64 \
+char_device_delay_mode=0 \
+char_device_request_statistics_mode=0 \
+char_device_max_req_stat_entries=1000 \
+char_device_read_sector_latency_us=50 \
+char_device_program_sector_latency_us=250 \
+char_device_erase_block_latency_us=700 \
+char_device_oob_size=0 \
+char_device_read_oob_latency_us=0 \
+char_device_program_oob_latency_us=0 \
+char_device_ftl_mode=0 \
+char_device_cache_level_1=6552 \
+char_device_cache_level_2=1640 \
+char_device_num_extra_blocks=60
+
+########################### CHAR DEVICES ##########################
+###### names of char devices
+char_dev_module="flashsim_char"
+block_dev_stat_module="flashsim_block_stat"
+char_dev_stat_module="flashsim_char_stat"
+
+###### delete old entries in /dev/
+if [ -e /dev/$char_dev_module ]
+then
+  rm /dev/$char_dev_module
+fi
+
+if [ -e /dev/$block_dev_stat_module ]
+then
+  rm /dev/$block_dev_stat_module
+fi
+
+if [ -e /dev/$char_dev_stat_module ]  
+then
+  rm /dev/$char_dev_stat_module
+fi
+
+###### search for new major numbers in /proc/devices
+
+char_dev_major=$( awk -vmodule="$char_dev_module" '$2==module {print $1}' < /proc/devices ) 
+block_dev_stat_major=$( awk -vmodule="$block_dev_stat_module" '$2==module {print $1}' < /proc/devices ) 
+char_dev_stat_major=$( awk -vmodule="$char_dev_stat_module" '$2==module {print $1}' < /proc/devices ) 
+
+###### if devices are mapped - create entry in /dev/
+
+if [ -n "$char_dev_major" ]
+then
+  echo "CHAR DEVICE MAJOR = " $char_dev_major
+  mknod /dev/$char_dev_module c $char_dev_major 0
+  chmod 777 /dev/$char_dev_module
+fi
+
+if [ -n "$block_dev_stat_major" ]
+then
+  echo "BLOCK DEVICE STATISTICS MAJOR = " $block_dev_stat_major
+  mknod /dev/$block_dev_stat_module c $block_dev_stat_major 0
+  chmod 777 /dev/$block_dev_stat_module
+fi
+
+if [ -n "$char_dev_stat_major" ]
+then
+  echo "CHAR DEVICE STATISTICS MAJOR = " $char_dev_stat_major
+  mknod /dev/$char_dev_stat_module c $char_dev_stat_major 0
+  chmod 777 /dev/$char_dev_stat_module
+fi
+
+########################### END OF CHAR DEVICES ##########################
+
+###########################BLOCK DEVICE##########################
+###Partitioning###
+#fdisk /dev/flashsim_block << EOF
+#x
+#c
+#1
+#r
+#n
+#p
+#1
+#
+#
+#w 
+#EOF
+
+###Make ext3/ext4 filesystem on top of block device
+#mkfs /dev/flashsim_block1
+
+###Mount block device to e.g., /media/flash_block
+#mount /dev/flashsim_block1 /media/flash_block -o sync
+
+###Change rights for mounted block device (777 is the most UNSAFE mode) 
+#chmod 777 /media/flash_block
+
+###Change rights for raw block partition (777 is the most UNSAFE mode)
+#chmod 777 /dev/flashsim_block1
+
+###Change rights for raw block device (777 is the most UNSAFE mode)
+chmod 777 /dev/flashsim_block
+
+#########################END OF BLOCK DEVICE#####################
+
+############################CHAR DEVICE##########################
+
+###Remove previous (if there any) char device node from /dev
+#rm /dev/flashsim_char
+
+###Create new char device node in /dev. 
+###Note the third parameter is the major number it should be equal to the char_device_major_number parameter in insmod.
+###If, for example 249 is already used in system, you could specify char_device_major_number=0 and the module would find first free number.
+###You then need to look in the log to see under which major number the char device is registered
+#mknod /dev/flashsim_char c 249 0
+
+###Change rights for raw char device (777 is the most UNSAFE mode)
+#chmod 777 /dev/flashsim_char
+########################END OF CHAR DEVICE#######################
+
+#############################FIO TESTS###########################
+#sudo fio random-read-raw-block.fio
+#sudo fio random-read-raw-char.fio
+#sudo fio random-write-raw-block.fio
+#sudo fio random-write-raw-char.fio
+#./fio_generate_plots PLOTS (this is however better to do separatly for read tests and for write test, due to different time execution differencies)
+#########################END OF FIO TESTS########################

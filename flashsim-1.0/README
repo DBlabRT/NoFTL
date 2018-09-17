@@ -1,0 +1,23 @@
+/**************************Naming conventions********************************/
+flashsim_module
+flashsim_block_device
+flashsim_char_device
+
+PAGE: 
+	so far there are a lot of kernel functions using this term in their names (e.g., allocate_page, free_page, etc.) and to avoid confusions we
+	with other terms that also could be defined as "pages", withing this project we define the PAGE as:
+	access unit of main memory of PC (usually 4 Kb).
+	=> names like: page_idx, page_offset, PAGE_SHIFT... all refere to main memory page (that is from PC architecture given)
+
+KERNEL_SECTOR:
+	linux kernel sees all block devices as a contiguous sequence of 512 bytes blocks (independent of internal (physical) structure of device,
+	size of its internal access unit etc. => always blocks in size of 512 bytes	). Everywhere, where the word sector comes following the word
+	kernel we mean 512 byte area of memory (the only one exception is the kernel type sector_t = it is used to describe the index of kernel sectors). 
+	There, where the word "sector" comes without word "kernel" we are talking about "NAND PAGE" (see next definition).		
+
+SECTOR:
+	This is the "NAND PAGE" = "... the smallest addressable unit for read and program operations of NAND memory." AS already said only to avoid
+	collisions with "main memory page" we will call this as SECTOR
+	
+BLOCK:
+	Minimal eraseable unit of NAND memory

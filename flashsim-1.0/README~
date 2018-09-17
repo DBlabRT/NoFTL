@@ -1,0 +1,90 @@
+/**************************Naming conventions********************************/
+flashsim_module
+flashsim_block_device
+flashsim_char_device
+
+PAGE: 
+	so far there are a lot of kernel functions using this term in their names (e.g., allocate_page, free_page, etc.) and to avoid confusions we
+	with other terms that also could be defined as "pages", withing this project we define the PAGE as:
+	access unit of main memory of PC (usually 4 Kb).
+	=> names like: page_idx, page_offset, PAGE_SHIFT... all refere to main memory page (that is from PC architecture given)
+
+KERNEL_SECTOR:
+	linux kernel sees all block devices as a contiguous sequence of 512 bytes blocks (independent of internal (physical) structure of device,
+	size of its internal access unit etc. => always blocks in size of 512 bytes	). Everywhere, where the word sector comes following the word
+	kernel we mean 512 byte area of memory (the only one exception is the kernel type sector_t = it is used to describe the index of kernel sectors). 
+	There, where the word "sector" comes without word "kernel" we are talking about "NAND PAGE" (see next definition).		
+
+SECTOR:
+	This is the "NAND PAGE" = "... the smallest addressable unit for read and program operations of NAND memory." AS already said only to avoid
+	collisions with "main memory page" we will call this as SECTOR
+	
+BLOCK:
+	Minimal eraseable unit of NAND memory
+	
+----------------------------Ranges--------------------------------------
+100 Gb = 107.374.182.400 bytes
+=> size 					[0 .. 107.374.182.400]	=> int64 = long long (or unsigned long long) (8 bytes) = s64 (or u64) = -9.223.372.036.854.775.808..+9.223.372.036.854.775.807
+=> kernel_sector			[0 .. 209.715.200]		=> int32 = int = (4 Bytes) = -2.147.483.648..+2.147.483.647
+=> sectors(2048 bytes)		[0 .. 52.428.800]		=> int32 = int = (4 Bytes) = -2.147.483.648..+2.147.483.647
+=> pages(4096 bytes)  		[0 .. 26.214.400]		=> int32 = int = (4 Bytes) = -2.147.483.648..+2.147.483.647
+=> blocks(64 * 2048 bytes)	[0 .. 819.200]			=> int32 = int = (4 Bytes) = -2.147.483.648..+2.147.483.647
+	
+1	If variable is of Type,		use printk format specifier:
+2	---------------------------------------------------------
+3			int						%d or %x
+4			unsigned int			%u or %x
+5			long					%ld or %lx
+6			unsigned long			%lu or %lx
+7			long long				%lld or %llx
+8			unsigned long long		%llu or %llx
+9			size_t					%zu or %zx
+10			ssize_t					%zd or %zx
+
+Types in my current architecture:
+arch   Size:  char  short  int  long   ptr long-long  u8 u16 u32 u64
+x86_64          1     2     4     8     8     8        1   2   4   8
+
+In all current processors the size of standard "int" is 4 bytes. So in the flashsim code we will use instead of u32 (s32) unsigned int or just int.
+The where we need 8 byte value we would use u64 (s64).
+
+In order to have portable code we would use build-in types:
+------------KERNEL SPACE-----------------------------
+u8    unsigned byte (8 bits)
+u16   unsigned word (16 bits)
+u32   unsigned 32-bit value
+u64   unsigned 64-bit value
+s8    signed byte (8 bits)
+s16   signed word (16 bits)
+s32   signed 32-bit value
+s64   signed 64-bit value
+
+--------------USER SPACE---------------------------------
+__u8   unsigned byte (8 bits)
+__u16   unsigned word (16 bits)
+__u32   unsigned 32-bit value
+__u64   unsigned 64-bit value
+__s8    signed byte (8 bits)
+__s16   signed word (16 bits)
+__s32   signed 32-bit value
+__s64   signed 64-bit value
+
+/*static int ioctl_read_metadata(struct flashsim_module *flashsim, unsigned long arg)
+{
+	struct flashsim_page buf;
+	if (copy_from_user(&buf, (struct flashsim_page *) arg, sizeof(buf)))
+		return -EINVAL;
+	if (buf.pagenum > flashsim->params.num_hw_pages)
+		return -EINVAL;
+	u8 * metadata = vmalloc(flashsim->params.page_metadata_size);
+	if (!metadata)
+		return -ENOMEM;
+
+	if (copy_metadata_from_flashsim(buf.pagenum, metadata))
+		return -1;
+
+	if(copy_to_user((void __user *) buf.metadata, metadata, flashsim->params.page_metadata_size))
+		return -EFAULT;
+	return 0;
+}*/
+	
