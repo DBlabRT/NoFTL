@@ -9,36 +9,6 @@ NoFTL is a fork of [Shore-MT](https://bitbucket.org/shoremt/), which itself is d
 The NoFTL project consists of two main parts: Shore-MT and FlashSim. Shore-MT in turn is devided into two sub-projects: 1) shore-mt - storage engine, and 2) shore-kits - test suite, which allows to run various benchmarks. FlashSim is an emulator of Flash memory, which is implemented as a device driver in Linux kernel. 
 	
 	
-## Papers
-S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
-From In-Place Updates to In-Place Appends: Revisiting Out-of-Place Updates on Flash
-In Proc. SIGMOD 2017
-
-S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
-Selective In-Place Appends for Real: Reducing Erases on Wear-prone DBMS Storage
-In Proc. ICDE 2017
-
-S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
-In-Place Appends for Real: DBMS Overwrites on Flash without Erase
-In Proc. EDBT 2017
-
-S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
-Effective DBMS space management on native Flash
-In Proc. BTW 2017
-
-S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
-Revisiting DBMS Space Management for Native Flash
-In Proc. EDBT 2016
-
-S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
-NoFTL for Real: Databases on Real Native Flash Storage
-In Proc. EDBT 2015 
-
-I. Petrov, R. Gottstein, S. Hardock.
-DBMS on Modern Storage Hardware
-In Proc. ICDE 2015  
-
-
 ## Configure & Build & Install
 #### shoreMT
 		More detailed information can be found here: https://bitbucket.org/shoremt/shore-mt/wiki/Home  
@@ -67,3 +37,33 @@ In Proc. ICDE 2015
 ## Testing
 	cd shoreMT-KIT
 	sudo ./shore_kits -c tpcc-100
+
+
+## Papers
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+From In-Place Updates to In-Place Appends: Revisiting Out-of-Place Updates on Flash
+In Proc. SIGMOD 2017
+
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+Selective In-Place Appends for Real: Reducing Erases on Wear-prone DBMS Storage
+In Proc. ICDE 2017
+
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+In-Place Appends for Real: DBMS Overwrites on Flash without Erase
+In Proc. EDBT 2017
+
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+Effective DBMS space management on native Flash
+In Proc. BTW 2017
+
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+Revisiting DBMS Space Management for Native Flash
+In Proc. EDBT 2016
+
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+NoFTL for Real: Databases on Real Native Flash Storage
+In Proc. EDBT 2015 
+
+I. Petrov, R. Gottstein, S. Hardock.
+DBMS on Modern Storage Hardware
+In Proc. ICDE 2015  
