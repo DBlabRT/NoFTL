@@ -1,5 +1,5 @@
 ## About
-	NoFTL - a storage architecture which allows the DBMS to operate directly on a raw Flash memory, i.e., without intermediate layers such as file system and FTL (Flash Translation Layer used by modern Flash-SSDs). NoFTL was first presented at the VLDB'13 conference with the demo paper [NoFTL: Database Systems on FTL-less Flash Storage](http://www.vldb.org/pvldb/vol6/p1278-petrov.pdf). The NoFTL-v1.0 project is the source code, which was used by that demonstration.
+	NoFTL - a storage architecture which allows the DBMS to operate directly on a raw Flash memory, i.e., without intermediate layers such as file system and FTL (Flash Translation Layer used by modern Flash-SSDs). NoFTL was first presented at the VLDB'13 conference with the demo paper [NoFTL: Database Systems on FTL-less Flash Storage](http://www.vldb.org/pvldb/vol6/p1278-petrov.pdf). The NoFTL-v1.0 project is the source code, which was used by that demonstration. 
 
 ## History
 	NoFTL is a fork of [Shore-MT](https://bitbucket.org/shoremt/), which itself is derived from Shore. The latter was developed in the early 90's by researchers in the University of Wisconsin-Madison, whereas the former was a continuation of the project at Carnegie Mellon University and, later on, EPFL. Shore-MT focuses on improving scalability in multi-core CPUs. Several published techniques in the database literature are based on Shore/Shore-MT, including recent and ongoing research.
@@ -10,8 +10,34 @@
 	
 	
 ## Papers
-        The codebase covers :
-	Sergej Hardock, Ilia Petrov, Robert Gottstein, Alejandro Buchmann. NoFTL: Database Systems on FTL-less Flash Storage. In Proc. VLDB 2013 
+From In-Place Updates to In-Place Appends: Revisiting Out-of-Place Updates on Flash
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+In Proc. SIGMOD 2017
+
+Selective In-Place Appends for Real: Reducing Erases on Wear-prone DBMS Storage
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+In Proc. ICDE 2017
+
+In-Place Appends for Real: DBMS Overwrites on Flash without Erase
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+In Proc. EDBT 2017
+
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+Effective DBMS space management on native Flash
+In Proc. BTW 2017
+
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+Revisiting DBMS Space Management for Native Flash
+In Proc. EDBT 2016
+
+S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+NoFTL for Real: Databases on Real Native Flash Storage
+In Proc. EDBT 2015 
+
+I. Petrov, R. Gottstein, S. Hardock.
+DBMS on Modern Storage Hardware
+In Proc. ICDE 2015  
+
 
 ## Configure & Build & Install
 #### shoreMT
