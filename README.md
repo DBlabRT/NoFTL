@@ -10,6 +10,8 @@
 	
 	
 ## Papers
+        The codebase covers :
+	Sergej Hardock, Ilia Petrov, Robert Gottstein, Alejandro Buchmann. NoFTL: Database Systems on FTL-less Flash Storage. In Proc. VLDB 2013 
 
 ## Configure & Build & Install
 #### shoreMT
