@@ -10,16 +10,16 @@
 	
 	
 ## Papers
-From In-Place Updates to In-Place Appends: Revisiting Out-of-Place Updates on Flash
 S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+From In-Place Updates to In-Place Appends: Revisiting Out-of-Place Updates on Flash
 In Proc. SIGMOD 2017
 
-Selective In-Place Appends for Real: Reducing Erases on Wear-prone DBMS Storage
 S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+Selective In-Place Appends for Real: Reducing Erases on Wear-prone DBMS Storage
 In Proc. ICDE 2017
 
-In-Place Appends for Real: DBMS Overwrites on Flash without Erase
 S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
+In-Place Appends for Real: DBMS Overwrites on Flash without Erase
 In Proc. EDBT 2017
 
 S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
