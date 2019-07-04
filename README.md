@@ -40,6 +40,14 @@ The NoFTL project consists of two main parts: Shore-MT and FlashSim. Shore-MT in
 
 
 ## Papers
+S. Hardock, A. Koch, T. Vinccon, I. Petrov. 
+IPA-IDX: In-Place Appends for B-Tree Indices. 
+In Proc. DaMoN 2019.
+
+I. Petrov, A. Koch, S. Hardock, T. Vincon, C. Riegger. 
+Native Storage Techniques for Data Management. 
+In Proc. ICDE 2019
+
 S. Hardock, I. Petrov, R. Gottstein, A. Buchmann.
 From In-Place Updates to In-Place Appends: Revisiting Out-of-Place Updates on Flash
 In Proc. SIGMOD 2017
